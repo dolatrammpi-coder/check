@@ -1,207 +1,110 @@
 {
-  "slug": "upsssc-pet-2026",
-  "year": 2026,
+  "id": "upsssc-pet-2026",
+
+  "category": "UPSSSC Recruitment",
+
   "title": "UPSSSC PET 2026 Online Form",
+
   "organization": "Uttar Pradesh Subordinate Services Selection Commission (UPSSSC)",
-  "post": "Preliminary Eligibility Test (PET) 2026",
-  "advertisement": "16-परीक्षा/2026",
-  "category": "Latest Jobs",
-  "category_link": "index.html",
-  "description": "UPSSSC PET 2026 के लिए ऑनलाइन आवेदन, महत्वपूर्ण तिथियां, शुल्क, आयु सीमा, योग्यता, परीक्षा पैटर्न, सिलेबस और महत्वपूर्ण लिंक।",
-  "short_information": "उत्तर प्रदेश अधीनस्थ सेवा चयन आयोग (UPSSSC) ने Preliminary Eligibility Test (PET) 2026 के लिए ऑनलाइन आवेदन आमंत्रित किए हैं। PET विभिन्न UPSSSC Group C भर्तियों की मुख्य परीक्षाओं में भाग लेने के लिए पात्रता/स्क्रीनिंग परीक्षा के रूप में उपयोग किया जाता है।",
-  "notice": "आवेदन करने से पहले आधिकारिक notification को ध्यानपूर्वक पढ़ें और पात्रता, तिथि, शुल्क तथा अन्य शर्तों की पुष्टि करें।",
-  "important_dates": [
-    {
-      "label": "Notification Release",
-      "value": "01/08/2026"
-    },
-    {
-      "label": "Application Begin",
-      "value": "03/08/2026"
-    },
-    {
-      "label": "Last Date for Apply Online",
-      "value": "01/09/2026"
-    },
-    {
-      "label": "Last Date for Fee Payment",
-      "value": "01/09/2026"
-    },
-    {
-      "label": "Correction Last Date",
-      "value": "Notification/Portal के अनुसार"
-    },
-    {
-      "label": "Exam Date",
-      "value": "आयोग द्वारा बाद में घोषित"
-    }
-  ],
-  "application_fee": [
-    {
-      "label": "General / OBC / EWS",
-      "value": "₹185/-"
-    },
-    {
-      "label": "SC / ST",
-      "value": "₹95/-"
-    },
-    {
-      "label": "PwD (Divyang)",
-      "value": "₹25/-"
-    },
-    {
-      "label": "Payment Mode",
-      "value": "Online"
-    }
-  ],
+
+  "meta_description": "UPSSSC PET 2026 Online Form - Important Dates, Eligibility, Application Fee, Exam Pattern, Syllabus and Important Links.",
+
+  "search_keywords": "UPSSSC PET PET 2026 UP PET Preliminary Eligibility Test",
+
+  "basic_info_title": "UPSSSC PET 2026",
+
+  "basic_info": {
+    "Organization": "Uttar Pradesh Subordinate Services Selection Commission",
+    "Exam Name": "UPSSSC PET 2026",
+    "Application Mode": "Online",
+    "Exam Level": "State Level"
+  },
+
+  "important_dates": {
+    "Application Start": "As per Official Notification",
+    "Last Date": "As per Official Notification",
+    "Correction Last Date": "As per Official Notification",
+    "Exam Date": "As per Official Notification"
+  },
+
+  "application_fee": {
+    "General / OBC": "As per Official Notification",
+    "SC / ST": "As per Official Notification",
+    "Payment Mode": "Online"
+  },
+
   "age_limit": {
-    "minimum": "18 Years",
-    "maximum": "40 Years",
-    "calculation_date": "01/07/2026",
-    "relaxation": "आरक्षित वर्गों तथा अन्य पात्र श्रेणियों को नियमों के अनुसार आयु में छूट लागू होगी।"
+    "Minimum Age": "18 Years",
+    "Maximum Age": "As per Official Notification",
+    "Age Relaxation": "As per UPSSSC rules"
   },
-  "vacancy_details": {
-    "is_qualifying_exam": true,
-    "total_vacancy": "कोई निश्चित vacancy नहीं",
-    "post": "Preliminary Eligibility Test (PET) 2026",
-    "qualification": [
-      "मान्यता प्राप्त बोर्ड से हाईस्कूल (कक्षा 10) या समकक्ष परीक्षा उत्तीर्ण।",
-      "उच्च शैक्षणिक योग्यता रखने वाले उम्मीदवार भी पात्र हो सकते हैं।",
-      "PET एक qualifying/screening examination है; अलग-अलग Group C पदों की मुख्य भर्ती में संबंधित पद की अतिरिक्त योग्यता लागू होगी।"
-    ]
+
+  "eligibility": [
+    "Candidate should fulfill the educational qualification mentioned in the official notification.",
+    "Candidates should carefully read the official notification before applying."
+  ],
+
+  "vacancy": {
+    "Exam": "UPSSSC PET 2026",
+    "Total Vacancy": "As per Official Notification"
   },
+
   "selection_process": [
-    "UPSSSC PET 2026 Written Examination",
-    "PET Score/Eligibility के आधार पर संबंधित UPSSSC मुख्य परीक्षाओं के लिए आवेदन का अवसर",
-    "अलग-अलग पदों की अंतिम भर्ती में संबंधित मुख्य परीक्षा, skill test, document verification, medical आदि नियम लागू हो सकते हैं।"
+    "PET Examination",
+    "Further recruitment process as applicable to the concerned post"
   ],
-  "exam_pattern": [
-    {
-      "stage": "PET Written Examination",
-      "details": "Offline OMR Based Objective Examination; 100 Questions; 100 Marks; Duration 2 Hours; प्रत्येक सही उत्तर पर 1 अंक; प्रत्येक गलत उत्तर पर 1/4 अंक की negative marking."
-    }
-  ],
+
+  "exam_pattern": {
+    "Exam Mode": "As per Official Notification",
+    "Question Type": "Objective Type",
+    "Total Questions": "As per Official Notification",
+    "Total Marks": "As per Official Notification",
+    "Duration": "As per Official Notification"
+  },
+
   "syllabus": [
+    "Indian History",
+    "Indian National Movement",
+    "Geography",
+    "Indian Economy",
+    "Indian Constitution and Public Administration",
+    "General Science",
+    "Elementary Arithmetic",
+    "General Hindi",
+    "General English",
+    "Logic and Reasoning",
+    "Current Affairs",
+    "General Awareness",
+    "Other subjects as prescribed in the official notification"
+  ],
+
+  "important_links": [
     {
-      "subject": "भारतीय इतिहास",
-      "questions": 5,
-      "marks": 5
+      "name": "Apply Online",
+      "url": "https://example.com/apply"
     },
     {
-      "subject": "भारतीय राष्ट्रीय आंदोलन",
-      "questions": 5,
-      "marks": 5
+      "name": "Download Official Notification",
+      "url": "https://example.com/notification.pdf"
     },
     {
-      "subject": "भूगोल",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "भारतीय अर्थव्यवस्था",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "भारतीय संविधान एवं लोक प्रशासन",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "सामान्य विज्ञान",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "प्रारंभिक अंकगणित",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "सामान्य हिंदी",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "सामान्य अंग्रेजी",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "तर्क एवं तर्कशक्ति",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "करेंट अफेयर्स",
-      "questions": 10,
-      "marks": 10
-    },
-    {
-      "subject": "सामान्य जागरूकता",
-      "questions": 10,
-      "marks": 10
-    },
-    {
-      "subject": "हिंदी अपठित गद्यांश का विश्लेषण",
-      "questions": 5,
-      "marks": 5
-    },
-    {
-      "subject": "ग्राफ एवं तालिका का विश्लेषण",
-      "questions": 10,
-      "marks": 10
-    },
-    {
-      "subject": "उत्तर प्रदेश से संबंधित सामान्य जागरूकता",
-      "questions": 10,
-      "marks": 10
+      "name": "Official Website",
+      "url": "https://example.com/"
     }
   ],
-  "important_instructions": [
-    "आवेदन करने से पहले official notification ध्यानपूर्वक पढ़ें।",
-    "UPSSSC की One-Time Registration (OTR) प्रक्रिया को पूरा करना आवश्यक हो सकता है।",
-    "Application form में दी गई जानकारी को submit करने से पहले जांच लें।",
-    "Fee payment और final application के बाद उसकी copy/receipt सुरक्षित रखें।",
-    "PET score का उपयोग संबंधित UPSSSC recruitments में निर्धारित नियमों के अनुसार किया जाएगा।",
-    "किसी specific Group C post के लिए PET के अतिरिक्त उस पद की अलग eligibility और selection conditions भी लागू होंगी।"
-  ],
-  "faqs": [
+
+  "faq": [
     {
-      "question": "UPSSSC PET 2026 का Apply Online कब शुरू हुआ?",
-      "answer": "UPSSSC PET 2026 के ऑनलाइन आवेदन 03 अगस्त 2026 से शुरू हुए हैं।"
+      "question": "UPSSSC PET 2026 का आवेदन कैसे करें?",
+      "answer": "ऊपर दिए गए Apply Online link पर जाकर official application portal से आवेदन करें।"
     },
     {
-      "question": "UPSSSC PET 2026 की Last Date क्या है?",
-      "answer": "ऑनलाइन आवेदन की अंतिम तिथि 01 सितंबर 2026 है।"
+      "question": "UPSSSC PET 2026 की eligibility क्या है?",
+      "answer": "Eligibility के लिए official notification में दी गई शैक्षिक योग्यता और अन्य शर्तें देखें।"
     },
     {
-      "question": "UPSSSC PET 2026 में कितने पद हैं?",
-      "answer": "PET स्वयं कोई पद-विशिष्ट भर्ती नहीं है। यह विभिन्न UPSSSC भर्तियों के लिए qualifying/screening examination है, इसलिए इसकी अपनी कोई निश्चित vacancy नहीं है।"
-    },
-    {
-      "question": "UPSSSC PET 2026 के लिए Educational Qualification क्या है?",
-      "answer": "उम्मीदवार को मान्यता प्राप्त बोर्ड से हाईस्कूल (कक्षा 10) या समकक्ष परीक्षा उत्तीर्ण होना चाहिए।"
-    },
-    {
-      "question": "UPSSSC PET 2026 की Application Fee कितनी है?",
-      "answer": "General/OBC/EWS के लिए ₹185, SC/ST के लिए ₹95 और PwD उम्मीदवारों के लिए ₹25 है।"
-    },
-    {
-      "question": "UPSSSC PET 2026 की Age Limit क्या है?",
-      "answer": "न्यूनतम आयु 18 वर्ष और अधिकतम आयु 40 वर्ष है। आयु की गणना 01 जुलाई 2026 के आधार पर की जाती है।"
-    },
-    {
-      "question": "UPSSSC PET 2026 की Selection Process क्या है?",
-      "answer": "PET written examination के आधार पर उम्मीदवारों को संबंधित UPSSSC मुख्य भर्तियों के लिए पात्रता/शॉर्टलिस्टिंग का अवसर मिलता है। संबंधित भर्ती की अंतिम selection process अलग notification में दी जाती है।"
-    },
-    {
-      "question": "UPSSSC PET 2026 का Syllabus कहाँ मिलेगा?",
-      "answer": "इस page के Important Links section में Syllabus / Exam Pattern का link दिया गया है।"
-    },
-    {
-      "question": "UPSSSC PET 2026 का Apply Online link कहाँ मिलेगा?",
-      "answer": "Apply Online link इस page के Important Links section में उपलब्ध है।"
+      "question": "UPSSSC PET 2026 का syllabus कहाँ मिलेगा?",
+      "answer": "इस page के Syllabus section में उपलब्ध जानकारी देखें और official notification को भी जरूर देखें।"
     }
   ]
 }
