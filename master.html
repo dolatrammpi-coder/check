@@ -1,674 +1,432 @@
 <!doctype html>
 <html lang="hi">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>{{title}} - Exam Darpan</title>
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
-<meta name="description" content="{{description}}">
+<title>
+Loading... - Exam Darpan
+</title>
+
+<meta
+  name="description"
+  id="metaDescription"
+  content="Government Job Information - Exam Darpan"
+>
+
+<meta
+  name="robots"
+  content="index,follow"
+>
+
 
 <style>
+
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  font-family:system-ui,-apple-system,sans-serif;
-  background:#f4f7fb;
-  color:#1e293b;
-  line-height:1.55
+  margin:0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:#f5f6f8;
+
+  color:#222;
 }
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
 
 /* ================= HEADER ================= */
 
-.header-top{
-  background:linear-gradient(135deg,#1e293b,#0f172a);
-  color:#fff;
-  text-align:center;
-  padding:20px 15px
-}
-
-.site-brand{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px
-}
-
-.site-logo{
-  width:48px;
-  height:48px
-}
-
-.header-top h1{
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:1px
-}
-
-.header-top p{
-  font-size:13px;
-  color:#94a3b8;
-  letter-spacing:2px
-}
-
-/* ================= NAV ================= */
-
-.nav-bar{
-  background:#2563eb;
-  color:#fff;
-  padding:12px 15px;
-  font-weight:700;
-  display:flex;
-  justify-content:space-between
-}
-
-.nav-button{
-  color:#fff;
-  text-decoration:none;
-  cursor:pointer
-}
-
-/* ================= DRAWER ================= */
-
-.drawer-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  z-index:9998;
-  display:none
-}
-
-.drawer-overlay.active{
-  display:block
-}
-
-.drawer{
-  position:fixed;
-  top:0;
-  left:-310px;
-  width:290px;
-  max-width:85%;
-  height:100%;
+.header{
   background:#fff;
-  z-index:9999;
-  box-shadow:5px 0 20px rgba(0,0,0,.2);
-  transition:left .25s ease;
-  overflow-y:auto
+
+  border-bottom:1px solid #ddd;
 }
 
-.drawer.active{
-  left:0
+.header-inner{
+  max-width:1050px;
+
+  margin:auto;
+
+  padding:14px 16px;
 }
 
-.drawer-header{
-  background:linear-gradient(135deg,#1e293b,#0f172a);
-  color:#fff;
-  padding:18px 15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
-
-.drawer-header strong{
-  font-size:18px
-}
-
-.drawer-close{
-  border:0;
-  background:none;
-  color:#fff;
+.logo{
   font-size:25px;
-  cursor:pointer
+
+  font-weight:800;
 }
 
-.drawer-links{
-  padding:10px 0
+.logo span{
+  color:#d00000;
 }
 
-.drawer-links a{
-  display:block;
-  padding:13px 18px;
-  color:#1e293b;
-  text-decoration:none;
-  font-weight:650;
-  border-bottom:1px solid #e2e8f0
+.back{
+  display:inline-block;
+
+  margin-top:8px;
+
+  color:#d00000;
+
+  font-size:13px;
+
+  font-weight:700;
 }
 
-.drawer-links a:hover{
-  background:#f1f5f9;
-  color:#2563eb
+.back:hover{
+  text-decoration:underline;
 }
+
 
 /* ================= MAIN ================= */
 
-main{
-  max-width:1000px;
-  margin:20px auto;
-  padding:0 10px
+.container{
+  max-width:1050px;
+
+  margin:auto;
+
+  padding:18px 16px 40px;
 }
 
-/* ================= BREADCRUMB ================= */
 
-.breadcrumbs{
-  font-size:13px;
-  color:#64748b;
-  margin-bottom:15px;
-  font-weight:600
-}
+/* ================= HERO ================= */
 
-.breadcrumbs a{
-  color:#2563eb;
-  text-decoration:none
-}
-
-/* ================= POST ================= */
-
-.post-container{
+.hero{
   background:#fff;
-  border:1px solid #cbd5e1;
-  border-radius:8px;
-  padding:20px;
-  box-shadow:0 4px 15px rgba(0,0,0,.03)
-}
 
-.post-title{
-  font-size:24px;
-  color:#0f172a;
-  margin-bottom:10px;
-  border-bottom:2px solid #2563eb;
-  padding-bottom:10px
-}
+  border:1px solid #ddd;
 
-.post-meta{
-  font-size:13px;
-  color:#475569;
-  margin-bottom:15px
-}
-
-/* ================= SHORT INFO ================= */
-
-.short-info{
-  background:#f8fafc;
-  padding:12px;
-  border-left:4px solid #2563eb;
-  font-size:14px;
-  margin-bottom:20px
-}
-
-/* ================= NOTICE ================= */
-
-.notice{
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  padding:12px;
   border-radius:6px;
-  margin:15px 0;
-  font-size:13px
+
+  padding:18px;
+
+  margin-bottom:16px;
 }
 
-/* ================= AD ================= */
+.hero h1{
+  margin:0 0 8px;
 
-.ad-banner{
-  background:#e2e8f0;
-  color:#64748b;
-  text-align:center;
-  padding:20px;
-  margin:15px 0;
-  border:1px dashed #cbd5e1;
-  font-size:12px;
-  border-radius:4px
+  font-size:24px;
+
+  line-height:1.4;
 }
+
+.organization{
+  color:#666;
+
+  font-size:14px;
+
+  line-height:1.5;
+}
+
+
+/* ================= BOX ================= */
+
+.box{
+  background:#fff;
+
+  border:1px solid #ddd;
+
+  border-radius:6px;
+
+  overflow:hidden;
+
+  margin-bottom:16px;
+}
+
+.box-title{
+  background:#111;
+
+  color:#fff;
+
+  padding:11px 14px;
+
+  font-size:17px;
+
+  font-weight:700;
+}
+
+.box-content{
+  padding:14px;
+}
+
 
 /* ================= TABLE ================= */
 
 .info-table{
   width:100%;
+
   border-collapse:collapse;
-  margin-bottom:25px;
-  font-size:14px
+
+  font-size:14px;
 }
 
-.info-table th,
 .info-table td{
-  border:1px solid #cbd5e1;
-  padding:12px;
-  text-align:left;
-  vertical-align:top
+  border:1px solid #ddd;
+
+  padding:10px;
+
+  vertical-align:top;
+
+  line-height:1.5;
 }
 
-.info-table th{
-  background:#f1f5f9;
-  color:#0f172a;
-  font-weight:700
+.info-table td:first-child{
+  width:35%;
+
+  font-weight:700;
+
+  background:#fafafa;
 }
 
-.info-table ul{
-  padding-left:20px
+
+/* ================= LINKS ================= */
+
+.link-row{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    auto;
+
+  gap:12px;
+
+  align-items:center;
+
+  padding:11px 13px;
+
+  border-bottom:1px solid #eee;
+
+  font-size:14px;
+
+  line-height:1.4;
 }
 
-.info-table li{
-  margin-bottom:5px
+.link-row:last-child{
+  border-bottom:0;
 }
 
-/* ================= SECTION ================= */
-
-.table-wrapper{
-  border:1px solid #0f172a;
-  border-radius:4px;
-  margin-bottom:25px;
-  overflow:hidden
+.link-row:hover{
+  background:#fafafa;
 }
 
-.table-wrapper .info-table{
+.link-row a:hover{
+  color:#d00000;
+}
+
+.click{
+  color:#d00000;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  white-space:nowrap;
+}
+
+
+/* ================= TEXT ================= */
+
+.text{
+  font-size:14px;
+
+  line-height:1.65;
+}
+
+.text p{
+  margin:0 0 10px;
+}
+
+.text p:last-child{
   margin-bottom:0;
-  border:none
 }
 
-.section-heading{
-  text-align:center;
-  font-size:18px;
-  color:#fff;
-  background:#0f172a;
-  padding:10px
+.text ul{
+  margin-top:8px;
+  padding-left:20px;
 }
 
-/* ================= IMPORTANT LINKS ================= */
-
-.links-wrapper{
-  border:1px solid #2563eb;
-  border-radius:4px;
-  margin-bottom:25px;
-  overflow:hidden
+.text li{
+  margin-bottom:7px;
 }
 
-.links-wrapper .info-table{
-  margin-bottom:0;
-  border:none
-}
-
-.links-heading{
-  text-align:center;
-  font-size:18px;
-  color:#fff;
-  background:#2563eb;
-  padding:10px
-}
-
-.links-wrapper th{
-  width:60%
-}
-
-.links-wrapper td{
-  width:40%;
-  text-align:right
-}
-
-.btn-click{
-  background:#2563eb;
-  color:#fff;
-  padding:8px 16px;
-  text-decoration:none;
-  border-radius:4px;
-  display:inline-block;
-  font-weight:bold;
-  font-size:14px
-}
-
-.btn-click:hover{
-  background:#1d4ed8
-}
 
 /* ================= FAQ ================= */
 
-.faq-wrapper{
-  border:1px solid #cbd5e1;
-  border-radius:8px;
-  margin-top:25px;
-  margin-bottom:25px;
-  overflow:hidden;
-  background:#fff
+.faq{
+  border-bottom:1px solid #eee;
 }
 
-.faq-heading{
-  text-align:center;
-  font-size:18px;
-  color:#fff;
-  background:#0f172a;
-  padding:10px
-}
-
-.faq-item{
-  border-bottom:1px solid #e2e8f0
-}
-
-.faq-item:last-child{
-  border-bottom:none
+.faq:last-child{
+  border-bottom:0;
 }
 
 .faq-question{
-  width:100%;
-  background:#fff;
-  border:0;
-  padding:14px 15px;
-  text-align:left;
-  font-size:15px;
+  padding:12px 14px;
+
+  font-size:14px;
+
   font-weight:700;
-  color:#1e293b;
-  cursor:pointer;
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
 
-.faq-question:hover{
-  background:#f8fafc
-}
-
-.faq-question.active{
-  color:#2563eb
-}
-
-.faq-question span{
-  font-size:18px;
-  color:#2563eb
+  line-height:1.5;
 }
 
 .faq-answer{
-  display:none;
-  padding:0 15px 15px;
+  padding:0 14px 13px;
+
+  color:#555;
+
   font-size:14px;
-  color:#475569;
-  background:#fff
+
+  line-height:1.6;
 }
+
+
+/* ================= ERROR ================= */
+
+.error{
+  background:#fff;
+
+  border:1px solid #ddd;
+
+  border-radius:6px;
+
+  padding:20px;
+
+  color:#b00000;
+
+  font-size:14px;
+}
+
 
 /* ================= FOOTER ================= */
 
-.footer-area{
-  background:#0f172a;
-  color:#94a3b8;
-  padding:30px 15px;
+footer{
+  background:#111;
+
+  color:#ddd;
+}
+
+.footer-inner{
+  max-width:1050px;
+
+  margin:auto;
+
+  padding:25px 16px;
+
   text-align:center;
-  margin-top:40px
 }
 
 .footer-links{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:15px;
-  margin-bottom:15px
-}
 
-.footer-links a{
-  color:#e2e8f0;
-  text-decoration:none;
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:10px 18px;
+
+  margin-bottom:15px;
+
   font-size:13px;
-  font-weight:600
 }
 
 .footer-links a:hover{
-  color:#38bdf8;
-  text-decoration:underline
+  color:#fff;
 }
 
-.footer-text{
+.copyright{
+  color:#999;
+
   font-size:12px;
-  line-height:1.5;
-  max-width:800px;
-  margin:0 auto;
-  color:#64748b
 }
+
 
 /* ================= MOBILE ================= */
 
-@media(max-width:768px){
+@media(max-width:650px){
 
-  .header-top{
-    padding:10px 12px
+  .container{
+    padding:12px 12px 30px;
   }
 
-  .site-brand{
-    gap:10px
+  .hero{
+    padding:15px;
   }
 
-  .site-logo{
-    width:42px;
-    height:42px
-  }
-
-  .header-top h1{
-    font-size:21px;
-    letter-spacing:.7px
-  }
-
-  .header-top p{
-    font-size:9px;
-    letter-spacing:1.5px
-  }
-
-  main{
-    width:100%;
-    margin:10px auto;
-    padding:0 7px
-  }
-
-  .post-container{
-    padding:12px
-  }
-
-  .post-title{
+  .hero h1{
     font-size:20px;
-    line-height:1.45
-  }
-
-  .post-meta{
-    font-size:12px
-  }
-
-  .short-info,
-  .notice{
-    font-size:12px
   }
 
   .info-table{
-    font-size:12px
+    font-size:13px;
   }
 
-  .info-table th,
   .info-table td{
-    padding:9px
+    padding:8px;
   }
 
-  .split-table{
-    display:table;
-    width:100%
+  .info-table td:first-child{
+    width:42%;
   }
 
-  .split-table tr{
-    display:table-row
+  .link-row{
+    font-size:13px;
+
+    padding:10px;
   }
 
-  .split-table th,
-  .split-table td{
-    display:table-cell;
-    width:50%;
-    text-align:left
+  .box-title{
+    font-size:15px;
   }
 
-  .table-wrapper{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch
-  }
-
-  .table-wrapper .info-table{
-    min-width:100%
-  }
-
-  .faq-question{
-    font-size:14px;
-    padding:13px
-  }
-
-  .faq-answer{
-    font-size:13px
-  }
-
-  .footer-links{
-    gap:10px;
-    flex-direction:column
-  }
 }
 
-@media(max-width:420px){
-
-  .header-top h1{
-    font-size:18px
-  }
-
-  .header-top p{
-    font-size:8px
-  }
-
-  .site-logo{
-    width:38px;
-    height:38px
-  }
-
-  .post-title{
-    font-size:19px
-  }
-
-  .btn-click{
-    font-size:12px;
-    padding:8px 13px
-  }
-}
 </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= DRAWER ================= -->
 
-<div class="drawer-overlay" id="drawerOverlay"></div>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<aside class="drawer" id="drawer">
+<header class="header">
 
-  <div class="drawer-header">
-    <strong>Exam Darpan Menu</strong>
+  <div class="header-inner">
 
-    <button class="drawer-close"
-            id="drawerClose"
-            aria-label="Close Menu">
-      ×
-    </button>
-  </div>
-
-  <nav class="drawer-links">
-
-    <a href="index.html">🏠 Home</a>
-
-    <a href="latest-jobs.html">💼 Latest Jobs</a>
-
-    <a href="result.html">📋 Results</a>
-
-    <a href="admit-card.html">🎫 Admit Card</a>
-
-    <a href="answer-key.html">🔑 Answer Key</a>
-
-    <a href="syllabus.html">📚 Syllabus</a>
-
-    <a href="admission.html">🎓 Admission</a>
-
-    <a href="about-us.html">ℹ️ About Us</a>
-
-    <a href="contact-us.html">📞 Contact Us</a>
-
-  </nav>
-
-</aside>
-
-
-<!-- ================= HEADER ================= -->
-
-<header>
-
-  <div class="header-top">
-
-    <div class="site-brand">
-
-      <svg class="site-logo"
-           viewBox="0 0 54 54"
-           aria-label="Exam Darpan logo"
-           role="img">
-
-        <defs>
-
-          <linearGradient id="logoGradient"
-                          x1="0"
-                          y1="0"
-                          x2="1"
-                          y2="1">
-
-            <stop offset="0"
-                  stop-color="#ffffff"/>
-
-            <stop offset="1"
-                  stop-color="#dbeafe"/>
-
-          </linearGradient>
-
-        </defs>
-
-        <rect x="1"
-              y="1"
-              width="52"
-              height="52"
-              rx="15"
-              fill="url(#logoGradient)"/>
-
-        <path d="M16 16h22v5H21v6h14v5H21v6h17v5H16z"
-              fill="#2056d9"/>
-
-        <circle cx="42"
-                cy="14"
-                r="4"
-                fill="#fbbf24"/>
-
-      </svg>
-
-      <div>
-
-        <h1>EXAM DARPAN</h1>
-
-        <p>WWW.EXAMDARPAN.COM</p>
-
-      </div>
-
+    <div class="logo">
+      Exam <span>Darpan</span>
     </div>
 
-  </div>
-
-
-  <div class="nav-bar">
-
-    <a href="javascript:void(0)"
-       class="nav-button"
-       id="menuButton">
-
-      ≡ Menu
-
-    </a>
-
-    <a href="index.html"
-       class="nav-button">
-
-      🏠 Home
-
+    <a
+      href="/"
+      class="back"
+    >
+      ← Back to Home
     </a>
 
   </div>
@@ -676,534 +434,848 @@ main{
 </header>
 
 
-<!-- ================= MAIN ================= -->
 
-<main>
+<!-- =====================================================
+     PAGE
+===================================================== -->
 
-  <!-- Breadcrumb -->
+<main
+  class="container"
+  id="app"
+>
 
-  <div class="breadcrumbs">
-
-    <a href="index.html">Home</a>
-
-    »
-
-    <a href="{{category_link}}">
-      {{category_name}}
-    </a>
-
-    »
-
-    {{post_name}}
-
-  </div>
-
-
-  <!-- ================= POST ================= -->
-
-  <div class="post-container">
-
-    <h1 class="post-title">
-      {{title}}
-    </h1>
-
-
-    <div class="post-meta">
-
-      <strong>Organization:</strong>
-      {{organization}}
-
-      <br>
-
-      <strong>Post:</strong>
-      {{post}}
-
-      <br>
-
-      <strong>Advertisement:</strong>
-      {{advertisement}}
-
-    </div>
-
-
-    <!-- Short Information -->
-
-    <div class="short-info">
-
-      <strong>Short Information:</strong>
-
-      {{short_information}}
-
-    </div>
-
-
-    <!-- Notice -->
-
-    <div class="notice">
-
-      <strong>Important:</strong>
-
-      {{important_notice}}
-
-    </div>
-
-
-    <!-- Advertisement -->
-
-    <div class="ad-banner">
-      Responsive Advertisement Space (AdSense)
-    </div>
-
-
-    <!-- ================= DATES + FEE ================= -->
-
-    <table class="info-table split-table">
-
-      <tr>
-
-        <th>
-
-          <div style="color:#cc0000;font-size:16px;margin-bottom:5px">
-            Important Dates
-          </div>
-
-          <ul>
-
-            {{important_dates}}
-
-          </ul>
-
-        </th>
-
-
-        <th>
-
-          <div style="color:#cc0000;font-size:16px;margin-bottom:5px">
-            Application Fee
-          </div>
-
-          <ul>
-
-            {{application_fee}}
-
-          </ul>
-
-        </th>
-
-      </tr>
-
-    </table>
-
-
-    <!-- ================= AGE ================= -->
-
-    <div class="table-wrapper">
-
-      <h2 class="section-heading">
-        {{post_name}} Age Limit
-      </h2>
-
-      <table class="info-table">
-
-        <tr>
-
-          <td>
-
-            <ul>
-
-              {{age_limit}}
-
-            </ul>
-
-          </td>
-
-        </tr>
-
-      </table>
-
-    </div>
-
-
-    <!-- ================= VACANCY ================= -->
-
-    <div class="table-wrapper">
-
-      <h2 class="section-heading">
-
-        {{post_name}} Recruitment {{year}} : Vacancy Details
-
-      </h2>
-
-      <table class="info-table">
-
-        <thead>
-
-          <tr>
-
-            <th style="text-align:center">
-              Post
-            </th>
-
-            <th style="text-align:center">
-              Vacancy
-            </th>
-
-            <th style="text-align:center">
-              Qualification
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {{vacancy_rows}}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <!-- ================= SELECTION ================= -->
-
-    <div class="table-wrapper">
-
-      <h2 class="section-heading">
-
-        {{post_name}} Selection Process
-
-      </h2>
-
-      <table class="info-table">
-
-        <tr>
-
-          <td>
-
-            <ul>
-
-              {{selection_process}}
-
-            </ul>
-
-            {{selection_note}}
-
-          </td>
-
-        </tr>
-
-      </table>
-
-    </div>
-
-
-    <!-- ================= EXAM PATTERN ================= -->
-
-    <div class="table-wrapper">
-
-      <h2 class="section-heading">
-
-        {{post_name}} Exam Pattern
-
-      </h2>
-
-      <table class="info-table">
-
-        <thead>
-
-          <tr>
-
-            <th>
-              Stage
-            </th>
-
-            <th>
-              Details
-            </th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {{exam_pattern_rows}}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <!-- Advertisement -->
-
-    <div class="ad-banner">
-      Responsive Advertisement Space (AdSense)
-    </div>
-
-
-    <!-- ================= INSTRUCTIONS ================= -->
-
-    <div class="table-wrapper">
-
-      <h2 class="section-heading">
-        Important Instructions
-      </h2>
-
-      <table class="info-table">
-
-        <tr>
-
-          <td>
-
-            <ul>
-
-              {{instructions}}
-
-            </ul>
-
-          </td>
-
-        </tr>
-
-      </table>
-
-    </div>
-
-
-    <!-- ================= IMPORTANT LINKS ================= -->
-
-    <div class="links-wrapper">
-
-      <h2 class="links-heading">
-        Important Links
-      </h2>
-
-      <table class="info-table">
-
-        <tbody>
-
-          {{important_links}}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-
-    <!-- ================= FAQ ================= -->
-
-    <div class="faq-wrapper">
-
-      <h2 class="faq-heading">
-        Frequently Asked Questions (FAQ)
-      </h2>
-
-      {{faq_items}}
-
-    </div>
-
-
+  <div class="error">
+    Loading...
   </div>
 
 </main>
 
 
-<!-- ================= FOOTER ================= -->
 
-<footer class="footer-area">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-  <div class="footer-links">
+<footer>
 
-    <a href="index.html">
-      Home
-    </a>
+  <div class="footer-inner">
 
-    <a href="about-us.html">
-      About Us
-    </a>
+    <div class="footer-links">
 
-    <a href="contact-us.html">
-      Contact Us
-    </a>
+      <a href="/">
+        Home
+      </a>
 
-    <a href="privacy-policy.html">
-      Privacy Policy
-    </a>
+      <a href="/about.html">
+        About Us
+      </a>
 
-    <a href="terms-conditions.html">
-      Terms &amp; Conditions
-    </a>
+      <a href="/contact.html">
+        Contact Us
+      </a>
 
-    <a href="disclaimer.html">
-      Disclaimer
-    </a>
+      <a href="/privacy-policy.html">
+        Privacy Policy
+      </a>
+
+      <a href="/disclaimer.html">
+        Disclaimer
+      </a>
+
+    </div>
+
+    <div class="copyright">
+
+      © 2026 Exam Darpan. All Rights Reserved.
+
+    </div>
 
   </div>
-
-
-  <p class="footer-text">
-
-    Disclaimer: Exam Darpan एक independent job और education information portal है।
-    Recruitment की अंतिम और आधिकारिक जानकारी के लिए संबंधित organization की
-    official notification और official website को प्राथमिकता दें।
-
-  </p>
-
-
-  <p class="footer-text"
-     style="margin-top:15px">
-
-    © {{year}} Exam Darpan. All Rights Reserved.
-
-  </p>
 
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-/* ================= DRAWER ================= */
+/* =====================================================
+   CONFIG
+===================================================== */
 
-const menuButton =
-  document.getElementById("menuButton");
-
-const drawer =
-  document.getElementById("drawer");
-
-const drawerOverlay =
-  document.getElementById("drawerOverlay");
-
-const drawerClose =
-  document.getElementById("drawerClose");
+const DATA_PATH = "data/";
 
 
-function openDrawer(){
+/* =====================================================
+   GET ID FROM URL
+===================================================== */
 
-  drawer.classList.add("active");
-
-  drawerOverlay.classList.add("active");
-
-  document.body.style.overflow="hidden";
-
-}
-
-
-function closeDrawer(){
-
-  drawer.classList.remove("active");
-
-  drawerOverlay.classList.remove("active");
-
-  document.body.style.overflow="";
-
-}
-
-
-menuButton.addEventListener(
-  "click",
-  openDrawer
-);
-
-
-drawerClose.addEventListener(
-  "click",
-  closeDrawer
-);
-
-
-drawerOverlay.addEventListener(
-  "click",
-  closeDrawer
-);
-
-
-/* ESC key */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    if(event.key==="Escape"){
-
-      closeDrawer();
-
-    }
-
-  }
-);
-
-
-/* ================= FAQ ================= */
-
-document
-.querySelectorAll(".faq-question")
-.forEach(function(button){
-
-  button.addEventListener(
-    "click",
-    function(){
-
-      const answer =
-        this.nextElementSibling;
-
-      const icon =
-        this.querySelector("span");
-
-      const isOpen =
-        answer.style.display === "block";
-
-
-      document
-      .querySelectorAll(".faq-answer")
-      .forEach(function(item){
-
-        item.style.display="none";
-
-      });
-
-
-      document
-      .querySelectorAll(".faq-question span")
-      .forEach(function(item){
-
-        item.textContent="+";
-
-      });
-
-
-      document
-      .querySelectorAll(".faq-question")
-      .forEach(function(item){
-
-        item.classList.remove("active");
-
-      });
-
-
-      if(!isOpen){
-
-        answer.style.display="block";
-
-        icon.textContent="−";
-
-        this.classList.add("active");
-
-      }
-
-    }
+const params =
+  new URLSearchParams(
+    window.location.search
   );
 
-});
+
+const vacancyId =
+  params.get("id");
+
+
+/* =====================================================
+   LOAD JSON
+===================================================== */
+
+async function loadVacancy(){
+
+  if(!vacancyId){
+
+    showError(
+      "Vacancy ID नहीं मिला।"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const filename =
+      vacancyId + ".json";
+
+
+    const response =
+      await fetch(
+        DATA_PATH + filename,
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "JSON file not found"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    renderVacancy(data);
+
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+
+    showError(
+      "यह vacancy उपलब्ध नहीं है या इसकी JSON file नहीं मिली।"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER VACANCY
+===================================================== */
+
+function renderVacancy(data){
+
+  const title =
+    data.title ||
+    "Government Job";
+
+
+  /* ================= TITLE ================= */
+
+  document.title =
+    title +
+    " - Exam Darpan";
+
+
+  /* ================= DESCRIPTION ================= */
+
+  const description =
+    data.meta_description ||
+    (
+      title +
+      " recruitment details, eligibility, vacancy, important dates and important links."
+    );
+
+
+  document
+    .getElementById(
+      "metaDescription"
+    )
+    .setAttribute(
+      "content",
+      description
+    );
+
+
+  /* ================= APP ================= */
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+
+  let html = "";
+
+
+  /* =================================================
+     HERO
+  ================================================= */
+
+  html += `
+
+    <section class="hero">
+
+      <h1>
+        ${safe(title)}
+      </h1>
+
+      ${
+        data.organization
+          ? `
+            <div class="organization">
+              ${safe(
+                data.organization
+              )}
+            </div>
+          `
+          : ""
+      }
+
+    </section>
+
+  `;
+
+
+  /* =================================================
+     BASIC INFORMATION
+  ================================================= */
+
+  if(
+    data.basic_info &&
+    Object.keys(
+      data.basic_info
+    ).length
+  ){
+
+    html +=
+      createTableSection(
+        data.basic_info_title ||
+        "Vacancy Details",
+
+        data.basic_info
+      );
+
+  }
+
+
+  /* =================================================
+     IMPORTANT DATES
+  ================================================= */
+
+  if(
+    data.important_dates
+  ){
+
+    html +=
+      createTableSection(
+        "Important Dates",
+
+        data.important_dates
+      );
+
+  }
+
+
+  /* =================================================
+     APPLICATION FEE
+  ================================================= */
+
+  if(
+    data.application_fee
+  ){
+
+    html +=
+      createTableSection(
+        "Application Fee",
+
+        data.application_fee
+      );
+
+  }
+
+
+  /* =================================================
+     AGE LIMIT
+  ================================================= */
+
+  if(
+    data.age_limit
+  ){
+
+    html +=
+      createTableSection(
+        "Age Limit",
+
+        data.age_limit
+      );
+
+  }
+
+
+  /* =================================================
+     ELIGIBILITY
+  ================================================= */
+
+  if(
+    data.eligibility
+  ){
+
+    html +=
+      createTextSection(
+        "Eligibility",
+
+        data.eligibility
+      );
+
+  }
+
+
+  /* =================================================
+     VACANCY
+  ================================================= */
+
+  if(
+    data.vacancy
+  ){
+
+    html +=
+      createTableSection(
+        "Vacancy Details",
+
+        data.vacancy
+      );
+
+  }
+
+
+  /* =================================================
+     SELECTION
+  ================================================= */
+
+  if(
+    data.selection_process
+  ){
+
+    html +=
+      createTextSection(
+        "Selection Process",
+
+        data.selection_process
+      );
+
+  }
+
+
+  /* =================================================
+     EXAM PATTERN
+  ================================================= */
+
+  if(
+    data.exam_pattern
+  ){
+
+    html +=
+      createTableSection(
+        "Exam Pattern",
+
+        data.exam_pattern
+      );
+
+  }
+
+
+  /* =================================================
+     SYLLABUS
+  ================================================= */
+
+  if(
+    data.syllabus
+  ){
+
+    html +=
+      createTextSection(
+        "Syllabus",
+
+        data.syllabus
+      );
+
+  }
+
+
+  /* =================================================
+     IMPORTANT LINKS
+  ================================================= */
+
+  if(
+    Array.isArray(
+      data.important_links
+    ) &&
+    data.important_links.length
+  ){
+
+    html += `
+
+      <section class="box">
+
+        <div class="box-title">
+          Important Links
+        </div>
+
+        <div>
+
+    `;
+
+
+    data.important_links
+      .forEach(link => {
+
+        if(!link){
+          return;
+        }
+
+
+        const url =
+          link.url ||
+          "#";
+
+
+        html += `
+
+          <div class="link-row">
+
+            <a
+              href="${safeAttr(url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ${safe(
+                link.name ||
+                "Important Link"
+              )}
+            </a>
+
+            <span class="click">
+              Click Here
+            </span>
+
+          </div>
+
+        `;
+
+      });
+
+
+    html += `
+
+        </div>
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =================================================
+     FAQ
+  ================================================= */
+
+  if(
+    Array.isArray(
+      data.faq
+    ) &&
+    data.faq.length
+  ){
+
+    html += `
+
+      <section class="box">
+
+        <div class="box-title">
+          Frequently Asked Questions
+        </div>
+
+    `;
+
+
+    data.faq.forEach(item => {
+
+      if(!item){
+        return;
+      }
+
+
+      html += `
+
+        <div class="faq">
+
+          <div class="faq-question">
+            ${safe(
+              item.question
+            )}
+          </div>
+
+          <div class="faq-answer">
+            ${safe(
+              item.answer
+            )}
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+
+    html += `
+
+      </section>
+
+    `;
+
+  }
+
+
+  /* =================================================
+     FINAL
+  ================================================= */
+
+  if(!html.trim()){
+
+    html = `
+
+      <div class="error">
+        इस vacancy की जानकारी उपलब्ध नहीं है।
+      </div>
+
+    `;
+
+  }
+
+
+  app.innerHTML =
+    html;
+
+}
+
+
+/* =====================================================
+   TABLE SECTION
+===================================================== */
+
+function createTableSection(
+  title,
+  data
+){
+
+  let html = `
+
+    <section class="box">
+
+      <div class="box-title">
+        ${safe(title)}
+      </div>
+
+      <div class="box-content">
+
+        <table class="info-table">
+
+          <tbody>
+
+  `;
+
+
+  if(
+    data &&
+    typeof data === "object" &&
+    !Array.isArray(data)
+  ){
+
+    Object.entries(
+      data
+    ).forEach(
+      ([key,value]) => {
+
+        html += `
+
+          <tr>
+
+            <td>
+              ${safe(key)}
+            </td>
+
+            <td>
+              ${formatValue(value)}
+            </td>
+
+          </tr>
+
+        `;
+
+      }
+    );
+
+  }else{
+
+    html += `
+
+      <tr>
+
+        <td>
+          Details
+        </td>
+
+        <td>
+          ${formatValue(data)}
+        </td>
+
+      </tr>
+
+    `;
+
+  }
+
+
+  html += `
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  `;
+
+
+  return html;
+
+}
+
+
+/* =====================================================
+   TEXT SECTION
+===================================================== */
+
+function createTextSection(
+  title,
+  content
+){
+
+  let html = "";
+
+
+  if(
+    Array.isArray(content)
+  ){
+
+    /*
+      Array होने पर bullet list
+    */
+
+    html += "<ul>";
+
+
+    content.forEach(
+      item => {
+
+        html +=
+          "<li>" +
+          safe(item) +
+          "</li>";
+
+      }
+    );
+
+
+    html += "</ul>";
+
+
+  }else{
+
+    html =
+      "<p>" +
+      safe(content) +
+      "</p>";
+
+  }
+
+
+  return `
+
+    <section class="box">
+
+      <div class="box-title">
+        ${safe(title)}
+      </div>
+
+      <div class="box-content text">
+
+        ${html}
+
+      </div>
+
+    </section>
+
+  `;
+
+}
+
+
+/* =====================================================
+   FORMAT VALUE
+===================================================== */
+
+function formatValue(value){
+
+  if(
+    Array.isArray(value)
+  ){
+
+    let html =
+      "<ul>";
+
+
+    value.forEach(
+      item => {
+
+        html +=
+          "<li>" +
+          safe(item) +
+          "</li>";
+
+      }
+    );
+
+
+    html +=
+      "</ul>";
+
+
+    return html;
+
+  }
+
+
+  return safe(value);
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+function showError(
+  message
+){
+
+  document
+    .getElementById("app")
+    .innerHTML =
+
+    `
+
+      <div class="error">
+
+        ${safe(message)}
+
+      </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   SAFE HTML
+===================================================== */
+
+function safe(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* =====================================================
+   SAFE ATTRIBUTE
+===================================================== */
+
+function safeAttr(
+  value
+){
+
+  return safe(value);
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadVacancy();
 
 </script>
 
+
 </body>
+
 </html>
