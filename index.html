@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Exam Darpan - Latest Government Jobs, Results, Admit Card & More</title>
+
+<meta name="description"
+content="Exam Darpan पर Latest Government Jobs, Recruitment, Admit Card, Results, Answer Key, Syllabus और सरकारी परीक्षा से जुड़ी महत्वपूर्ण जानकारी पाएं।">
+
+<meta name="robots" content="index,follow">
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fa;
+  color:#222;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.header-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  color:#111;
+  white-space:nowrap;
+}
+
+.logo span{
+  color:#d00;
+}
+
+.tagline{
+  font-size:12px;
+  color:#666;
+  margin-top:3px;
+}
+
+.menu-btn{
+  border:0;
+  background:#111;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:5px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area{
+  max-width:1100px;
+  margin:18px auto 10px;
+  padding:0 16px;
+}
+
+.search-box{
+  display:flex;
+  background:#fff;
+  border:1px solid #d8d8d8;
+  border-radius:6px;
+  overflow:hidden;
+}
+
+.search-box input{
+  width:100%;
+  border:0;
+  outline:0;
+  padding:13px 14px;
+  font-size:15px;
+}
+
+.search-box button{
+  border:0;
+  background:#111;
+  color:#fff;
+  padding:0 20px;
+  cursor:pointer;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:10px 16px 35px;
+}
+
+.welcome{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:6px;
+  padding:17px;
+  margin-bottom:16px;
+}
+
+.welcome h1{
+  margin:0 0 7px;
+  font-size:21px;
+}
+
+.welcome p{
+  margin:0;
+  color:#555;
+  line-height:1.55;
+  font-size:14px;
+}
+
+/* ================= TWO COLUMN ================= */
+
+.columns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+.column{
+  min-width:0;
+}
+
+.column.left{
+  padding-right:9px;
+  border-right:1px solid #d8d8d8;
+}
+
+.column.right{
+  padding-left:9px;
+}
+
+/* ================= CATEGORY ================= */
+
+.category{
+  background:#fff;
+  border:1px solid #d9d9d9;
+  border-radius:6px;
+  overflow:hidden;
+  margin-bottom:16px;
+}
+
+.category-title{
+  background:#111;
+  color:#fff;
+  padding:11px 13px;
+  font-size:16px;
+  font-weight:700;
+}
+
+.category-title span{
+  float:right;
+  font-size:11px;
+  font-weight:400;
+  opacity:.8;
+}
+
+/* ================= LINKS ================= */
+
+.links{
+  padding:0;
+}
+
+.link-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:10px 12px;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+  line-height:1.35;
+}
+
+.link-row:last-child{
+  border-bottom:0;
+}
+
+.link-name{
+  min-width:0;
+}
+
+.link-name a{
+  color:#222;
+}
+
+.link-name a:hover{
+  color:#d00000;
+}
+
+.click{
+  color:#d00000;
+  font-weight:700;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+.link-row:hover{
+  background:#fafafa;
+}
+
+/* ================= MORE ================= */
+
+.more-box{
+  display:none;
+}
+
+.more-box.show{
+  display:block;
+}
+
+.more-btn{
+  width:100%;
+  border:0;
+  border-top:1px solid #eee;
+  background:#fafafa;
+  padding:10px;
+  color:#d00000;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.more-btn:hover{
+  background:#f1f1f1;
+}
+
+/* ================= LATEST ================= */
+
+.latest{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:18px;
+}
+
+.latest-title{
+  background:#111;
+  color:#fff;
+  padding:12px 14px;
+  font-size:17px;
+  font-weight:700;
+}
+
+.latest-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  padding:11px 13px;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+.latest-item:last-child{
+  border-bottom:0;
+}
+
+.latest-item a:hover{
+  color:#d00000;
+}
+
+.badge{
+  color:#d00000;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#111;
+  color:#ddd;
+  margin-top:25px;
+}
+
+.footer-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:25px 16px;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+.copyright{
+  text-align:center;
+  font-size:12px;
+  color:#999;
+  line-height:1.6;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:760px){
+
+  .header-inner{
+    padding:12px 13px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .tagline{
+    display:none;
+  }
+
+  .search-area{
+    padding:0 12px;
+  }
+
+  .container{
+    padding:8px 12px 25px;
+  }
+
+  .columns{
+    display:block;
+  }
+
+  .column.left,
+  .column.right{
+    padding:0;
+    border:0;
+  }
+
+  .column.right{
+    margin-top:0;
+  }
+
+  .welcome h1{
+    font-size:19px;
+  }
+
+  .category-title{
+    font-size:15px;
+  }
+
+  .link-row{
+    font-size:13px;
+    padding:9px 10px;
+  }
+
+  .click{
+    font-size:11px;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:420px){
+
+  .link-row{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:7px;
+  }
+
+  .latest-item{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:7px;
+  }
+
+  .search-box button{
+    padding:0 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+  <div class="header-inner">
+
+    <div>
+      <div class="logo">
+        Exam <span>Darpan</span>
+      </div>
+
+      <div class="tagline">
+        Government Jobs • Results • Admit Card • Answer Key
+      </div>
+    </div>
+
+    <button class="menu-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      Home
+    </button>
+
+  </div>
+</header>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-area">
+  <div class="search-box">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search vacancy, result, admit card..."
+      oninput="searchLinks()"
+    >
+
+    <button type="button" onclick="searchLinks()">
+      Search
+    </button>
+  </div>
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+  <section class="welcome">
+
+    <h1>Exam Darpan</h1>
+
+    <p>
+      Latest Government Jobs, Recruitment, Admit Card, Results,
+      Answer Key, Syllabus और सरकारी परीक्षाओं से जुड़ी महत्वपूर्ण
+      जानकारी एक ही जगह।
+    </p>
+
+  </section>
+
+
+  <div class="columns">
+
+
+    <!-- ================================================= -->
+    <!-- LEFT COLUMN -->
+    <!-- ================================================= -->
+
+    <div class="column left">
+
+
+      <!-- ================= LATEST JOBS ================= -->
+
+      <section class="category searchable">
+
+        <div class="category-title">
+          Latest Government Jobs
+          <span>NEW</span>
+        </div>
+
+        <div class="links">
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="/upsssc-pet-2026.html">
+                UPSSSC PET 2026 Online Form
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                SSC CGL 2026 Online Form
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                SBI Junior Associates 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+
+          <div class="more-box">
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Railway Recruitment 2026
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  UP Police Recruitment 2026
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  IBPS Recruitment 2026
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="more-btn" onclick="toggleMore(this)">
+          More
+        </button>
+
+      </section>
+
+
+      <!-- ================= ADMIT CARD ================= -->
+
+      <section class="category searchable">
+
+        <div class="category-title">
+          Admit Card
+        </div>
+
+        <div class="links">
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Latest Admit Card 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                SSC Admit Card 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Railway Admit Card 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+
+          <div class="more-box">
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  UPSSSC Admit Card
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Police Admit Card
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="more-btn" onclick="toggleMore(this)">
+          More
+        </button>
+
+      </section>
+
+
+      <!-- ================= RESULTS ================= -->
+
+      <section class="category searchable">
+
+        <div class="category-title">
+          Results
+        </div>
+
+        <div class="links">
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Latest Government Exam Results
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                SSC Results 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Railway Results 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="more-box">
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  UPSSSC Results
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Police Results
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="more-btn" onclick="toggleMore(this)">
+          More
+        </button>
+
+      </section>
+
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- RIGHT COLUMN -->
+    <!-- ================================================= -->
+
+    <div class="column right">
+
+
+      <!-- ================= ANSWER KEY ================= -->
+
+      <section class="category searchable">
+
+        <div class="category-title">
+          Answer Key
+        </div>
+
+        <div class="links">
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Latest Answer Key 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                SSC Answer Key 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Railway Answer Key 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="more-box">
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  UPSSSC Answer Key
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Police Answer Key
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="more-btn" onclick="toggleMore(this)">
+          More
+        </button>
+
+      </section>
+
+
+      <!-- ================= SYLLABUS ================= -->
+
+      <section class="category searchable">
+
+        <div class="category-title">
+          Syllabus & Exam Pattern
+        </div>
+
+        <div class="links">
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                SSC CGL Syllabus 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                UPSSSC PET Syllabus
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Railway Syllabus 2026
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="more-box">
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Banking Exam Syllabus
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Police Exam Syllabus
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="more-btn" onclick="toggleMore(this)">
+          More
+        </button>
+
+      </section>
+
+
+      <!-- ================= IMPORTANT ================= -->
+
+      <section class="category searchable">
+
+        <div class="category-title">
+          Important Links
+        </div>
+
+        <div class="links">
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Sarkari Result
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Latest Government Jobs
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="link-row">
+            <div class="link-name">
+              <a href="#">
+                Previous Year Papers
+              </a>
+            </div>
+
+            <div class="click">Click Here</div>
+          </div>
+
+          <div class="more-box">
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Government Schemes
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+            <div class="link-row">
+              <div class="link-name">
+                <a href="#">
+                  Study Material
+                </a>
+              </div>
+
+              <div class="click">Click Here</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <button class="more-btn" onclick="toggleMore(this)">
+          More
+        </button>
+
+      </section>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= LATEST UPDATES ================= -->
+
+  <section class="latest">
+
+    <div class="latest-title">
+      Latest Updates
+    </div>
+
+
+    <div class="latest-item">
+
+      <a href="/upsssc-pet-2026.html">
+        UPSSSC PET 2026 Online Form
+      </a>
+
+      <span class="badge">
+        NEW
+      </span>
+
+    </div>
+
+
+    <div class="latest-item">
+
+      <a href="#">
+        SSC CGL 2026 Recruitment
+      </a>
+
+      <span class="badge">
+        NEW
+      </span>
+
+    </div>
+
+
+    <div class="latest-item">
+
+      <a href="#">
+        SBI Junior Associates 2026
+      </a>
+
+      <span class="badge">
+        NEW
+      </span>
+
+    </div>
+
+
+  </section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div class="footer-links">
+
+      <a href="/">Home</a>
+
+      <a href="/about.html">About Us</a>
+
+      <a href="/contact.html">Contact Us</a>
+
+      <a href="/privacy-policy.html">Privacy Policy</a>
+
+      <a href="/disclaimer.html">Disclaimer</a>
+
+    </div>
+
+
+    <div class="copyright">
+
+      © 2026 Exam Darpan. All Rights Reserved.
+
+      <br>
+
+      Exam Darpan is an informational website for government
+      jobs, exams, results and educational updates.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* ================= MORE BUTTON ================= */
+
+function toggleMore(button){
+
+  const box = button.previousElementSibling.querySelector('.more-box');
+
+  if(!box) return;
+
+  box.classList.toggle('show');
+
+  if(box.classList.contains('show')){
+    button.textContent = 'Show Less';
+  }else{
+    button.textContent = 'More';
+  }
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchLinks(){
+
+  const input =
+    document.getElementById('searchInput').value
+    .trim()
+    .toLowerCase();
+
+  const categories =
+    document.querySelectorAll('.category');
+
+  categories.forEach(category => {
+
+    const rows =
+      category.querySelectorAll('.link-row');
+
+    let found = false;
+
+    rows.forEach(row => {
+
+      const text =
+        row.innerText.toLowerCase();
+
+      if(input === '' || text.includes(input)){
+
+        row.style.display = '';
+
+        if(input !== ''){
+          found = true;
+        }
+
+      }else{
+
+        row.style.display = 'none';
+
+      }
+
+    });
+
+
+    if(input !== ''){
+
+      category.style.display =
+        found ? '' : 'none';
+
+    }else{
+
+      category.style.display = '';
+
+    }
+
+  });
+
+}
+
+
+/* ================= ESC SEARCH ================= */
+
+document
+  .getElementById('searchInput')
+  .addEventListener('keydown', function(e){
+
+    if(e.key === 'Escape'){
+
+      this.value = '';
+
+      searchLinks();
+
+      this.blur();
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
