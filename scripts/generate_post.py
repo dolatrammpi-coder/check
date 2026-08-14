@@ -2,26 +2,28 @@ import os
 import glob
 import json
 import PyPDF2
-import google.generativeai as genai
+from google import genai
 
-# Gemini API setup
+# Gemini API ka Naya Setup
 API_KEY = os.environ.get("GEMINI_API_KEY")
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel('gemini-1.5-pro')
+client = genai.Client(api_key=API_KEY)
 
 def extract_text_from_pdf(pdf_path):
     text = ""
-    with open(pdf_path, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        for page in reader.pages:
-            text += page.extract_text() + "\n"
+    try:
+        with open(pdf_path, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            for page in reader.pages:
+                extracted = page.extract_text()
+                if extracted:
+                    text += extracted + "\n"
+    except Exception as e:
+        print(f"PDF Padhne mein error: {e}")
     return text
 
 def process_new_pdfs():
-    # pdfs/ folder me sabhi nayi pdfs dhundhega
     pdf_files = glob.glob("pdfs/*.pdf")
     
-    # Aapka template HTML (Ise string format me script me rakhna hai)
     with open("template.html", "r", encoding="utf-8") as f:
         template_html = f.read()
 
@@ -46,16 +48,19 @@ def process_new_pdfs():
         "html_content": (The complete filled HTML code)
         
         Notification Text:
-        {pdf_text[:10000]} # Limiting text to avoid token limits
+        {pdf_text[:10000]}
         
         HTML Template:
         {template_html}
         """
 
-        response = model.generate_content(prompt)
-        
         try:
-            # Clean response if it contains markdown JSON blocks
+            # Naya Model Call karne ka tarika
+            response = client.models.generate_content(
+                model='gemini-2.0-flash',
+                contents=prompt,
+            )
+            
             response_text = response.text.replace('```json', '').replace('```', '').strip()
             data = json.loads(response_text)
             
@@ -63,18 +68,13 @@ def process_new_pdfs():
             job_title = data['job_title']
             html_content = data['html_content']
             
-            # 1. Naya HTML file save karein
             with open(file_name, "w", encoding="utf-8") as f:
                 f.write(html_content)
                 
-            # 2. index.html ko update karein
             with open("index.html", "r", encoding="utf-8") as f:
                 index_content = f.read()
                 
-            new_link_html = f"""<!-- NEW_JOB_MARKER -->
-        <li>
-          <a href="{file_name}">{job_title}</a>
-        </li>"""
+            new_link_html = f"<!-- NEW_JOB_MARKER -->\n        <li>\n          <a href=\"{file_name}\">{job_title}</a>\n        </li>"
             
             updated_index = index_content.replace("<!-- NEW_JOB_MARKER -->", new_link_html)
             
@@ -82,8 +82,6 @@ def process_new_pdfs():
                 f.write(updated_index)
                 
             print(f"Success: Created {file_name} and updated index.html")
-            
-            # PDF delete kar dein taaki agli baar dobara process na ho
             os.remove(pdf)
             
         except Exception as e:
