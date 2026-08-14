@@ -1,0 +1,38 @@
+name: Auto Generate Vacancy Page
+
+on:
+  push:
+    paths:
+      - 'pdfs/*.pdf'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyPDF2 google-generativeai
+
+    - name: Run Python Automation Script
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: python scripts/generate_post.py
+
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action Bot"
+        git add .
+        # Check agar koi changes hue hain tabhi commit kare
+        git diff --quiet && git diff --staged --quiet || git commit -m "Auto-generated new vacancy page and updated index.html"
+        git push
