@@ -4,7 +4,6 @@ import json
 import PyPDF2
 from google import genai
 
-# Gemini API ka Naya Setup
 API_KEY = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=API_KEY)
 
@@ -18,11 +17,14 @@ def extract_text_from_pdf(pdf_path):
                 if extracted:
                     text += extracted + "\n"
     except Exception as e:
-        print(f"PDF Padhne mein error: {e}")
+        print(f"PDF extract error: {e}")
     return text
 
 def process_new_pdfs():
     pdf_files = glob.glob("pdfs/*.pdf")
+    if not pdf_files:
+        print("No PDFs found.")
+        return
     
     with open("template.html", "r", encoding="utf-8") as f:
         template_html = f.read()
@@ -31,21 +33,19 @@ def process_new_pdfs():
         print(f"Processing: {pdf}")
         pdf_text = extract_text_from_pdf(pdf)
         
+        if not pdf_text.strip():
+            print(f"Warning: No text extracted from {pdf}. It might be an image-based PDF.")
+            continue
+        
         prompt = f"""
-        You are an expert web developer and data entry specialist.
-        Read the following government job notification text and fill out the provided HTML template.
+        You are an expert web developer. Fill out the provided HTML template using the notification text.
         
-        Rules:
-        1. Keep the exact HTML structure and CSS classes.
-        2. Replace placeholders like [POST NAME], [DATE], [AMOUNT], etc., with actual data from the PDF.
-        3. If some data is missing, write "As per notification" or "Not Specified".
-        4. Generate a clean URL slug for the job (e.g., upsc-principal-2026.html).
-        5. Generate a short, catchy Job Title for the index page.
+        IMPORTANT: Your ENTIRE response MUST be a SINGLE, valid JSON object. Do NOT include any markdown formatting like ```json or any introductory text. Just the raw JSON.
         
-        Return ONLY a raw JSON object (no markdown formatting, no code blocks) with three keys:
-        "file_name": (The HTML file name),
-        "job_title": (The title for the index.html link),
-        "html_content": (The complete filled HTML code)
+        The JSON must have exactly these three keys:
+        "file_name": "job-name-2026.html",
+        "job_title": "Short Job Title",
+        "html_content": "<html>...entire filled html...</html>"
         
         Notification Text:
         {pdf_text[:10000]}
@@ -55,18 +55,36 @@ def process_new_pdfs():
         """
 
         try:
-            # Naya Model Call karne ka tarika
             response = client.models.generate_content(
                 model='gemini-2.0-flash',
                 contents=prompt,
             )
             
-            response_text = response.text.replace('```json', '').replace('```', '').strip()
-            data = json.loads(response_text)
+            # Behtar cleanup
+            raw_text = response.text.strip()
+            if raw_text.startswith("```json"):
+                raw_text = raw_text[7:]
+            if raw_text.startswith("```"):
+                raw_text = raw_text[3:]
+            if raw_text.endswith("```"):
+                raw_text = raw_text[:-3]
             
-            file_name = data['file_name']
-            job_title = data['job_title']
-            html_content = data['html_content']
+            raw_text = raw_text.strip()
+            
+            try:
+                data = json.loads(raw_text)
+            except json.JSONDecodeError as e:
+                print(f"JSON Parse Error: {e}")
+                print(f"Raw Response snippet: {raw_text[:200]}...")
+                continue
+            
+            file_name = data.get('file_name')
+            job_title = data.get('job_title')
+            html_content = data.get('html_content')
+            
+            if not file_name or not html_content:
+                print("Error: Missing file_name or html_content in JSON.")
+                continue
             
             with open(file_name, "w", encoding="utf-8") as f:
                 f.write(html_content)
@@ -81,11 +99,11 @@ def process_new_pdfs():
             with open("index.html", "w", encoding="utf-8") as f:
                 f.write(updated_index)
                 
-            print(f"Success: Created {file_name} and updated index.html")
+            print(f"Success: Created {file_name}")
             os.remove(pdf)
             
         except Exception as e:
-            print(f"Error processing {pdf}: {e}")
+            print(f"General processing error for {pdf}: {e}")
 
 if __name__ == "__main__":
     process_new_pdfs()
