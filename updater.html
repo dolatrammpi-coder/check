@@ -10,8 +10,8 @@
         .container { max-width: 500px; background: white; padding: 25px; border-radius: 8px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         h2 { text-align: center; color: #0f172a; margin-top: 0; }
         label { font-size: 13px; font-weight: 700; color: #475569; margin-top: 15px; display: block; }
-        input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; }
-        input:focus { outline: none; border-color: #2563eb; }
+        input, select { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; }
+        input:focus, select:focus { outline: none; border-color: #2563eb; }
         button { width: 100%; padding: 14px; background: #2563eb; color: white; border: none; font-weight: bold; font-size: 16px; cursor: pointer; border-radius: 6px; margin-top: 25px; }
         button:hover { background: #1d4ed8; }
     </style>
@@ -20,6 +20,14 @@
     <div class="container">
         <h2>⚡ Quick Post Updater</h2>
         
+        <label>Update Kis Section Me Jayega? (Homepage)</label>
+        <select id="updateCategory">
+            <option value="NONE">Sirf Vacancy Page Update Karo (Homepage nahi)</option>
+            <option value="RESULT">Result Section</option>
+            <option value="ADMIT_CARD">Admit Card Section</option>
+            <option value="ANSWER_KEY">Answer Key Section</option>
+        </select>
+
         <label>Target Vacancy Page (Eg: up-police-2026.html)</label>
         <input type="text" id="targetFile" placeholder="Enter .html filename">
 
@@ -44,6 +52,7 @@
             if(!targetFile) { alert("Bhai, Target Page ka naam daalna zaroori hai!"); return; }
 
             const data = {
+                category: document.getElementById('updateCategory').value,
                 target_file: targetFile,
                 update_title: document.getElementById('updateTitle').value.trim(),
                 date_text: document.getElementById('dateText').value.trim(),
