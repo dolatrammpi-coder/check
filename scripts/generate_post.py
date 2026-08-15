@@ -58,10 +58,6 @@ def analyze_pdf_and_generate(path, template_html):
     TEMPLATE_HTML_PLACEHOLDER
     """
     
-    # Template HTML ko yahan safe tarike se insert kar rahe hain
-    prompt = prompt.replace("TEMPLATE_HTML_PLACEHOLDER", template_html)
-
-    """
     payload = {
         "contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "application/pdf", "data": base64.b64encode(raw).decode()}}] }],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.1}
