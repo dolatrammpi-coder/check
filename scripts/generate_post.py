@@ -34,18 +34,17 @@ def analyze_pdf_and_generate(path, template_html):
 
     raw = open(path, 'rb').read()
 
-    # Yahan AI ko hum strictly bol rahe hain ki links ki jagah ek CODE WORD rakhe
-    prompt = f"""
-        prompt = f"""
+        # Normal triple quotes use kar rahe hain taaki syntax error na ho
+    prompt = """
     You are an expert web developer for an Indian jobs portal. Read the attached recruitment PDF carefully.
     Fill out the provided HTML template using the notification text.
 
     CRITICAL LINK INSTRUCTIONS:
     In the "Important Links" table of the HTML:
-    1. Set the href attribute for "Apply Online" EXACTLY to: {{{{APPLY_LINK}}}}
-    2. Set the href attribute for "Download Official Notification" EXACTLY to: {{{{NOTIFICATION_LINK}}}}
-    3. Set the href attribute for "Syllabus / Exam Pattern" EXACTLY to: {{{{NOTIFICATION_LINK}}}}
-    4. Set the href attribute for "Official Website" EXACTLY to: {{{{OFFICIAL_LINK}}}}
+    1. Set the href attribute for "Apply Online" EXACTLY to: {{APPLY_LINK}}
+    2. Set the href attribute for "Download Official Notification" EXACTLY to: {{NOTIFICATION_LINK}}
+    3. Set the href attribute for "Syllabus / Exam Pattern" EXACTLY to: {{NOTIFICATION_LINK}}
+    4. Set the href attribute for "Official Website" EXACTLY to: {{OFFICIAL_LINK}}
     Do not guess the links. Use exactly these placeholders.
 
     IMPORTANT: You MUST return a single, valid JSON object. Do not use Markdown representations.
@@ -56,7 +55,12 @@ def analyze_pdf_and_generate(path, template_html):
     "html_content": "<!doctype html><html lang='hi'>...entire filled html code...</html>"
 
     HTML Template:
-    {template_html}
+    TEMPLATE_HTML_PLACEHOLDER
+    """
+    
+    # Template HTML ko yahan safe tarike se insert kar rahe hain
+    prompt = prompt.replace("TEMPLATE_HTML_PLACEHOLDER", template_html)
+
     """
     payload = {
         "contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "application/pdf", "data": base64.b64encode(raw).decode()}}] }],
