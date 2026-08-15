@@ -6,12 +6,13 @@ import glob
 import urllib.request
 import urllib.error
 
+# Termux ki list ke hisaab se valid models
 PRIMARY_MODEL = os.getenv('GEMINI_MODEL', 'gemini-3.5-flash')
 
 FALLBACK_MODELS = [
     PRIMARY_MODEL,
     'gemini-flash-latest',
-    'gemini-1.5-pro'
+    'gemini-3.7-flash'
 ]
 
 API = 'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}'
@@ -34,7 +35,6 @@ def analyze_pdf_and_generate(path, template_html):
 
     raw = open(path, 'rb').read()
 
-    # Normal triple quotes use kar rahe hain taaki syntax error na ho
     prompt = """
     You are an expert web developer for an Indian jobs portal. Read the attached recruitment PDF carefully.
     Fill out the provided HTML template using the notification text.
@@ -47,7 +47,10 @@ def analyze_pdf_and_generate(path, template_html):
     4. Set the href attribute for "Official Website" EXACTLY to: {{OFFICIAL_LINK}}
     Do not guess the links. Use exactly these placeholders.
 
-    IMPORTANT: You MUST return a single, valid JSON object. Do not use Markdown representations.
+    IMPORTANT JSON RULES: 
+    1. You MUST return a single, valid JSON object. 
+    2. Do NOT use Markdown formatting (like ```json).
+    3. ALL HTML content must be strictly escaped. Do NOT put raw newlines (Enters) or unescaped quotes inside the HTML string. Keep the HTML as one continuous string if possible.
     
     The JSON must have exactly these three keys:
     "file_name": "job-name-2026.html",
@@ -88,7 +91,8 @@ def analyze_pdf_and_generate(path, template_html):
                     if '```' in text:
                         text = text.rsplit('```', 1)[0]
                 
-                return json.loads(text)
+                # strict=False lagaya taaki AI ke raw newlines error na dein
+                return json.loads(text, strict=False)
 
             except urllib.error.HTTPError as e:
                 detail = e.read().decode('utf-8', 'replace')
@@ -126,7 +130,6 @@ def process_new_pdfs():
     for pdf in pdf_files:
         print(f"Processing: {pdf}")
         
-        # 1. Links File Ko Dhoondhna
         basename = os.path.basename(pdf)
         timestamp = basename.split('_')[0] if '_' in basename else ''
         
@@ -147,7 +150,6 @@ def process_new_pdfs():
                 print(f"Error reading links JSON: {e}")
         
         try:
-            # 2. AI se Data Mangwana
             data = analyze_pdf_and_generate(pdf, template_html)
             
             file_name = data.get('file_name')
@@ -158,16 +160,13 @@ def process_new_pdfs():
                 print("Error: JSON missing file_name or html_content.")
                 continue
                 
-            # 3. Exact Links HTML me Inject Karna
             html_content = html_content.replace("{{APPLY_LINK}}", apply_link)
             html_content = html_content.replace("{{NOTIFICATION_LINK}}", notification_link)
             html_content = html_content.replace("{{OFFICIAL_LINK}}", official_link)
             
-            # HTML File Create Karna
             with open(file_name, "w", encoding="utf-8") as f:
                 f.write(html_content)
                 
-            # Index.html Update Karna
             with open("index.html", "r", encoding="utf-8") as f:
                 index_content = f.read()
                 
@@ -179,7 +178,6 @@ def process_new_pdfs():
                 
             print(f"Success: Created {file_name}")
             
-            # 4. Safai (Cleanup)
             os.remove(pdf)
             if os.path.exists(json_file_path):
                 os.remove(json_file_path)
