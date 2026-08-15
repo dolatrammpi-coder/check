@@ -44,6 +44,9 @@ body {
   display: flex;
   justify-content: space-between;
 }
+.nav-bar span {
+  cursor: pointer;
+}
 
 main {
   max-width: 1000px;
@@ -123,7 +126,7 @@ main {
 }
 
 .ed-col {
-  width: 50%;
+  width: 50%; /* Always exactly 50% for 2 columns */
   display: flex;
   flex-direction: column;
 }
@@ -232,24 +235,24 @@ main {
   color: #64748b;
 }
 
-/* MOBILE FIX FOR OVERLAPPING COLUMNS */
+/* MOBILE FIX FOR SIDE-BY-SIDE WITHOUT OVERLAPPING */
 @media(max-width:768px) {
-  .ed-container {
-    flex-direction: column; /* This stacks columns vertically on phones */
-  }
-  .ed-col {
-    width: 100%; /* Makes column take full width */
-  }
-  .ed-col.left-col {
-    border-right: none;
-    border-bottom: 1px solid #cbd5e1; /* Replaces middle line with bottom line */
-  }
   .ed-list a {
-    font-size: 13px;
+    font-size: 12px; /* Chhota font size */
+    word-wrap: break-word; /* Lamba text overlap nahi hoga, niche aayega */
+    word-break: break-word;
   }
   .ed-heading {
-    font-size: 14px;
-    padding: 10px 5px;
+    font-size: 13px;
+    padding: 8px 4px;
+  }
+  .ed-list {
+    padding: 10px 8px; /* Padding kam ki taaki jagah bache */
+  }
+  .view-more {
+    margin: auto 8px 10px;
+    font-size: 11px;
+    padding: 8px;
   }
   .footer-links {
     gap: 10px;
@@ -267,7 +270,7 @@ main {
     <p>WWW.EXAMDARPAN.COM</p>
   </div>
   <div class="nav-bar">
-    <span>≡ Menu</span>
+    <span id="menuBtn">≡ Menu</span>
     <span>🔍 Search</span>
   </div>
 </header>
@@ -357,7 +360,7 @@ main {
       <a href="latest-jobs.html" class="view-more">View All Jobs →</a>
     </div>
 
-  </div> <!-- Container End -->
+  </div>
 
   <div class="ad-banner">
     Responsive Advertisement Space
@@ -450,6 +453,7 @@ main {
 
 <!-- ================= JAVASCRIPT ================= -->
 <script>
+// Highlight Toggle JavaScript
 const toggleBtn = document.getElementById('highlight-toggle');
 const colorBlocks = document.getElementById('color-blocks');
 
@@ -461,6 +465,11 @@ toggleBtn.addEventListener('click', function() {
     colorBlocks.style.display = 'none';
     toggleBtn.innerHTML = 'प्रमुख हाइलाइट्स देखें ▼';
   }
+});
+
+// Menu Button JavaScript (Added click listener)
+document.getElementById('menuBtn').addEventListener('click', function() {
+  alert("Menu functionality will be active here!"); // Aap isko baad me navbar logic se replace kar sakte ho
 });
 </script>
 
