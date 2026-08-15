@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Darpan - Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; padding: 20px; }
+        .container { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #333; }
+        label { font-weight: bold; margin-top: 15px; display: block; color: #555; }
+        input[type="text"], input[type="file"], input[type="password"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; background-color: #0056b3; color: white; padding: 12px; margin-top: 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        button:hover { background-color: #004494; }
+        #status { margin-top: 15px; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🚀 Job Publisher</h2>
+    
+    <label>GitHub Token (Access Token)</label>
+    <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxx">
+    
+    <label>PDF Notification Upload</label>
+    <input type="file" id="pdfFile" accept=".pdf">
+    
+    <label>Exact 'Apply Online' Link</label>
+    <input type="text" id="applyLink" placeholder="https://...">
+    
+    <label>Official Website Link</label>
+    <input type="text" id="officialLink" placeholder="https://...">
+
+    <button onclick="uploadToGithub()">Upload & Generate Page</button>
+    <p id="status"></p>
+</div>
+
+<script>
+    async function uploadToGithub() {
+        const token = document.getElementById('ghToken').value;
+        const fileInput = document.getElementById('pdfFile').files[0];
+        const applyLink = document.getElementById('applyLink').value;
+        const officialLink = document.getElementById('officialLink').value;
+        const statusText = document.getElementById('status');
+
+        if (!token || !fileInput || !applyLink || !officialLink) {
+            statusText.innerText = "❌ Please fill all fields!";
+            statusText.style.color = "red";
+            return;
+        }
+
+        statusText.innerText = "⏳ Uploading... Please wait.";
+        statusText.style.color = "blue";
+
+        const repoOwner = "dolatrammpi-coder"; // Aapka username
+        const repoName = "check"; // Aapka repo name
+        const timestamp = new Date().getTime();
+        const safeFileName = fileInput.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+        
+        // 1. Convert PDF to Base64
+        const reader = new FileReader();
+        reader.readAsDataURL(fileInput);
+        reader.onload = async function () {
+            const base64Pdf = reader.result.split(',')[1];
+
+            // 2. Prepare Links JSON data
+            const linksData = JSON.stringify({
+                apply_link: applyLink,
+                official_link: officialLink
+            });
+            const base64Links = btoa(unescape(encodeURIComponent(linksData)));
+
+            try {
+                // Upload Links JSON
+                await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/pdfs/links_${timestamp}.json`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: "Added manual links", content: base64Links })
+                });
+
+                // Upload PDF
+                await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/pdfs/${timestamp}_${safeFileName}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: "Uploaded new notification PDF", content: base64Pdf })
+                });
+
+                statusText.innerText = "✅ Upload Successful! Auto-Generation Started.";
+                statusText.style.color = "green";
+                
+            } catch (error) {
+                statusText.innerText = "❌ Error uploading to GitHub.";
+                statusText.style.color = "red";
+                console.error(error);
+            }
+        };
+    }
+</script>
+
+</body>
+</html>
