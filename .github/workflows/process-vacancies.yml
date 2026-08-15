@@ -28,7 +28,9 @@ jobs:
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: python scripts/generate_post.py
-
+    - name: Run Auto Updater
+      run: python scripts/update_post.py
+      
     - name: Commit and Push Changes
       run: |
         git config --local user.email "action@github.com"
