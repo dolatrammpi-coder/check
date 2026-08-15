@@ -6,7 +6,7 @@ import google.generativeai as genai
 
 # Gemini Setup
 genai.configure(api_key=os.environ.get("AIzaSyD_QPvPpdXa5_NSWhY6qMSrcSkzgydnk2A"))
-model = genai.GenerativeModel('gemini-2.5-flash')
+model = genai.GenerativeModel('gemini-3.5-flash')
 
 def get_ai_title(category, url):
     prompt = f"For a government job portal, generate a short, professional title (under 30 chars) for a link. Category: {category}, URL: {url}. Just return the title text, nothing else."
