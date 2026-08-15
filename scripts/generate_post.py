@@ -36,13 +36,16 @@ def analyze_pdf_and_generate(path, template_html):
 
     # Yahan AI ko hum strictly bol rahe hain ki links ki jagah ek CODE WORD rakhe
     prompt = f"""
+        prompt = f"""
     You are an expert web developer for an Indian jobs portal. Read the attached recruitment PDF carefully.
     Fill out the provided HTML template using the notification text.
 
     CRITICAL LINK INSTRUCTIONS:
     In the "Important Links" table of the HTML:
     1. Set the href attribute for "Apply Online" EXACTLY to: {{{{APPLY_LINK}}}}
-    2. Set the href attribute for "Official Website" EXACTLY to: {{{{OFFICIAL_LINK}}}}
+    2. Set the href attribute for "Download Official Notification" EXACTLY to: {{{{NOTIFICATION_LINK}}}}
+    3. Set the href attribute for "Syllabus / Exam Pattern" EXACTLY to: {{{{NOTIFICATION_LINK}}}}
+    4. Set the href attribute for "Official Website" EXACTLY to: {{{{OFFICIAL_LINK}}}}
     Do not guess the links. Use exactly these placeholders.
 
     IMPORTANT: You MUST return a single, valid JSON object. Do not use Markdown representations.
@@ -55,7 +58,6 @@ def analyze_pdf_and_generate(path, template_html):
     HTML Template:
     {template_html}
     """
-
     payload = {
         "contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "application/pdf", "data": base64.b64encode(raw).decode()}}] }],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.1}
@@ -126,7 +128,8 @@ def process_new_pdfs():
         basename = os.path.basename(pdf)
         timestamp = basename.split('_')[0] if '_' in basename else ''
         
-        apply_link = "#"
+                apply_link = "#"
+        notification_link = "#"
         official_link = "#"
         
         json_file_path = f"pdfs/links_{timestamp}.json"
@@ -136,7 +139,28 @@ def process_new_pdfs():
                 with open(json_file_path, 'r', encoding='utf-8') as jf:
                     links_data = json.load(jf)
                     apply_link = links_data.get('apply_link', '#')
+                    notification_link = links_data.get('notification_link', '#')
                     official_link = links_data.get('official_link', '#')
+            except Exception as e:
+                print(f"Error reading links JSON: {e}")
+        
+        try:
+            # 2. AI se Data Mangwana
+            data = analyze_pdf_and_generate(pdf, template_html)
+            
+            file_name = data.get('file_name')
+            job_title = data.get('job_title')
+            html_content = data.get('html_content')
+            
+            if not file_name or not html_content:
+                print("Error: JSON missing file_name or html_content.")
+                continue
+                
+            # 3. Exact Links HTML me Inject Karna (No AI Error)
+            html_content = html_content.replace("{{APPLY_LINK}}", apply_link)
+            html_content = html_content.replace("{{NOTIFICATION_LINK}}", notification_link)
+            html_content = html_content.replace("{{OFFICIAL_LINK}}", official_link)
+
             except Exception as e:
                 print(f"Error reading links JSON: {e}")
         
