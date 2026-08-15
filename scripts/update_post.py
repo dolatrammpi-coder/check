@@ -5,7 +5,7 @@ import re
 import google.generativeai as genai
 
 # Gemini Setup
-genai.configure(api_key=os.environ.get("AIzaSyD_QPvPpdXa5_NSWhY6qMSrcSkzgydnk2A"))
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-3.5-flash')
 
 def get_ai_title(category, url):
