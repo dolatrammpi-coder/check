@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Darpan - Fast Updater</title>
+    <style>
+        * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: #f4f7fb; padding: 20px; color: #1e293b; }
+        .container { max-width: 500px; background: white; padding: 25px; border-radius: 8px; margin: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h2 { text-align: center; color: #0f172a; margin-top: 0; }
+        label { font-size: 13px; font-weight: 700; color: #475569; margin-top: 15px; display: block; }
+        input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; }
+        input:focus { outline: none; border-color: #2563eb; }
+        button { width: 100%; padding: 14px; background: #2563eb; color: white; border: none; font-weight: bold; font-size: 16px; cursor: pointer; border-radius: 6px; margin-top: 25px; }
+        button:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>⚡ Quick Post Updater</h2>
+        
+        <label>Target Vacancy Page (Eg: up-police-2026.html)</label>
+        <input type="text" id="targetFile" placeholder="Enter .html filename">
+
+        <label>Update Title (Eg: Download Admit Card)</label>
+        <input type="text" id="updateTitle" placeholder="e.g. Download Admit Card">
+
+        <label>Important Date Text (Eg: Admit Card Available)</label>
+        <input type="text" id="dateText" placeholder="e.g. Admit Card Available">
+
+        <label>Date Value (Eg: 15/08/2026)</label>
+        <input type="text" id="dateValue" placeholder="15/08/2026">
+
+        <label>New Link URL</label>
+        <input type="url" id="linkUrl" placeholder="https://...">
+
+        <button onclick="generateJSON()">Generate Update File</button>
+    </div>
+
+    <script>
+        function generateJSON() {
+            const targetFile = document.getElementById('targetFile').value.trim();
+            if(!targetFile) { alert("Bhai, Target Page ka naam daalna zaroori hai!"); return; }
+
+            const data = {
+                target_file: targetFile,
+                update_title: document.getElementById('updateTitle').value.trim(),
+                date_text: document.getElementById('dateText').value.trim(),
+                date_value: document.getElementById('dateValue').value.trim(),
+                link_url: document.getElementById('linkUrl').value.trim()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 4)], {type: 'application/json'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = targetFile.replace('.html', '') + '_update.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
