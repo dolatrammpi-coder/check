@@ -6,11 +6,7 @@ from datetime import datetime
 
 def process_updates():
     update_files = glob.glob("updates/*.json")
-    
-    # Aaj ki date nikal rahe hain (Eg: 2026-08-15)
     today = datetime.now().strftime("%Y-%m-%d")
-    
-    # Smart NEW Tag (Jisme date save hogi)
     new_badge = f'<span class="smart-new-tag" data-date="{today}" style="color:#cc0000; font-weight:bold;">[NEW]</span>'
 
     for update_file in update_files:
@@ -25,17 +21,12 @@ def process_updates():
             date_text = data.get('date_text')
             date_value = data.get('date_value')
             
-            # Default fallback name
-            job_name = target.replace('.html', '').replace('-', ' ').title()
+            # Seedha JSON se aayega wo perfect job name jo aapne dropdown me chuna tha!
+            job_name = data.get('job_name', target.replace('.html', '').replace('-', ' ').title())
             
             if os.path.exists(target):
                 with open(target, 'r', encoding='utf-8') as f: 
                     html = f.read()
-                
-                # Asli naam (Original Title) vacancy page se nikalna
-                h_match = re.search(r'<h[1-2][^>]*>(.*?)</h[1-2]>', html, re.IGNORECASE)
-                if h_match:
-                    job_name = re.sub(r'<[^>]+>', '', h_match.group(1)).strip()
                 
                 # 1. DATE UPDATE
                 if date_text and date_value and date_text not in html:
@@ -59,10 +50,9 @@ def process_updates():
                 with open('index.html', 'r', encoding='utf-8') as f: 
                     index = f.read()
                 
-                # Check for duplicates
-                if f'{target}">{job_name} - {title}' not in index:
+                # Update block me check 
+                if f'{target}">{new_badge} {job_name} - {title}' not in index:
                     marker = f'<!-- NEW_{cat}_MARKER -->'
-                    # Homepage par bhi smart new tag laga rahe hain
                     new_entry = f'{marker}\n        <li><a href="{target}">{new_badge} {job_name} - {title}</a></li>'
                     index = index.replace(marker, new_entry)
                     with open('index.html', 'w', encoding='utf-8') as f: 
