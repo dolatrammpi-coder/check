@@ -34,7 +34,7 @@ def analyze_pdf_and_generate(path, template_html):
 
     raw = open(path, 'rb').read()
 
-        # Normal triple quotes use kar rahe hain taaki syntax error na ho
+    # Normal triple quotes use kar rahe hain taaki syntax error na ho
     prompt = """
     You are an expert web developer for an Indian jobs portal. Read the attached recruitment PDF carefully.
     Fill out the provided HTML template using the notification text.
@@ -58,6 +58,8 @@ def analyze_pdf_and_generate(path, template_html):
     TEMPLATE_HTML_PLACEHOLDER
     """
     
+    prompt = prompt.replace("TEMPLATE_HTML_PLACEHOLDER", template_html)
+
     payload = {
         "contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "application/pdf", "data": base64.b64encode(raw).decode()}}] }],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.1}
@@ -104,6 +106,89 @@ def analyze_pdf_and_generate(path, template_html):
                 errors.append(f'{model} attempt {attempt + 1}: {e}')
                 if attempt < 2: time.sleep(5 * (attempt + 1))
             except json.JSONDecodeError as e:
+                errors.append(f'{model}: Invalid JSON returned: {e}')
+                break
+            except Exception as e:
+                errors.append(f'{model}: {e}')
+                break
+
+    raise RuntimeError('Gemini extraction failed. ' + ' | '.join(errors))
+
+def process_new_pdfs():
+    pdf_files = glob.glob("pdfs/*.pdf")
+    if not pdf_files:
+        print("No PDFs found.")
+        return
+    
+    with open("template.html", "r", encoding="utf-8") as f:
+        template_html = f.read()
+
+    for pdf in pdf_files:
+        print(f"Processing: {pdf}")
+        
+        # 1. Links File Ko Dhoondhna
+        basename = os.path.basename(pdf)
+        timestamp = basename.split('_')[0] if '_' in basename else ''
+        
+        apply_link = "#"
+        notification_link = "#"
+        official_link = "#"
+        
+        json_file_path = f"pdfs/links_{timestamp}.json"
+        
+        if os.path.exists(json_file_path):
+            try:
+                with open(json_file_path, 'r', encoding='utf-8') as jf:
+                    links_data = json.load(jf)
+                    apply_link = links_data.get('apply_link', '#')
+                    notification_link = links_data.get('notification_link', '#')
+                    official_link = links_data.get('official_link', '#')
+            except Exception as e:
+                print(f"Error reading links JSON: {e}")
+        
+        try:
+            # 2. AI se Data Mangwana
+            data = analyze_pdf_and_generate(pdf, template_html)
+            
+            file_name = data.get('file_name')
+            job_title = data.get('job_title')
+            html_content = data.get('html_content')
+            
+            if not file_name or not html_content:
+                print("Error: JSON missing file_name or html_content.")
+                continue
+                
+            # 3. Exact Links HTML me Inject Karna
+            html_content = html_content.replace("{{APPLY_LINK}}", apply_link)
+            html_content = html_content.replace("{{NOTIFICATION_LINK}}", notification_link)
+            html_content = html_content.replace("{{OFFICIAL_LINK}}", official_link)
+            
+            # HTML File Create Karna
+            with open(file_name, "w", encoding="utf-8") as f:
+                f.write(html_content)
+                
+            # Index.html Update Karna
+            with open("index.html", "r", encoding="utf-8") as f:
+                index_content = f.read()
+                
+            new_link_html = f"<!-- NEW_JOB_MARKER -->\n        <li>\n          <a href=\"{file_name}\">{job_title}</a>\n        </li>"
+            updated_index = index_content.replace("<!-- NEW_JOB_MARKER -->", new_link_html)
+            
+            with open("index.html", "w", encoding="utf-8") as f:
+                f.write(updated_index)
+                
+            print(f"Success: Created {file_name}")
+            
+            # 4. Safai (Cleanup)
+            os.remove(pdf)
+            if os.path.exists(json_file_path):
+                os.remove(json_file_path)
+            
+        except Exception as e:
+            print(f"Failed to process {pdf}: {e}")
+
+if __name__ == "__main__":
+    process_new_pdfs()
                 errors.append(f'{model}: Invalid JSON returned: {e}')
                 break
             except Exception as e:
