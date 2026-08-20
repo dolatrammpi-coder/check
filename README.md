@@ -12,3 +12,4 @@ GitHub Pages compatible original job portal starter:
 GitHub Pages: Settings → Pages → Deploy from branch → main → /(root)
 
 `data/jobs.json` में verified jobs जोड़ें। `.github/workflows/check-sources.yml` daily source monitoring करता है।
+Automated via Gemini Bridge
