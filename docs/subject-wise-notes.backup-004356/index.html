@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Subject Wise Notes | Exam Darpan</title>
+<meta name="description" content="प्रतियोगी परीक्षाओं की तैयारी के लिए विषयवार अध्ययन नोट्स।">
+<link rel="stylesheet" href="./assets/notes.css">
+</head>
+<body>
+
+
+<header class="site-header">
+<h1>Subject Wise Notes</h1>
+<p>प्रतियोगी परीक्षाओं की तैयारी के लिए विषयवार अध्ययन नोट्स</p>
+</header>
+
+
+<main class="container">
+
+
+<nav class="breadcrumb">
+<a href="../../index.html">Home</a>
+<span>›</span>
+<span>Notes</span>
+</nav>
+
+
+<section>
+<h2>विषयवार नोट्स</h2>
+<p>
+इतिहास, भूगोल, पर्यावरण, कला एवं संस्कृति, राजव्यवस्था,
+अर्थशास्त्र, विज्ञान और करेंट अफेयर्स से संबंधित अध्ययन नोट्स।
+</p>
+
+
+<div id="subjects">
+<p>Loading subjects...</p>
+</div>
+</section>
+
+
+</main>
+
+
+<footer class="site-footer">
+<p>
+<a href="../../index.html">Home</a>
+</p>
+</footer>
+
+
+<script>
+"use strict";
+
+const subjects=[
+["history","History"],
+["geography","Geography"],
+["environment","Environment"],
+["art-culture","Art & Culture"],
+["polity","Polity"],
+["current-affairs","Current Affairs"],
+["science","Science"],
+["economics","Economics"]
+];
+
+const box=document.getElementById("subjects");
+
+subjects.forEach(function(item){
+
+const card=document.createElement("div");
+card.className="notes-subject";
+
+const link=document.createElement("a");
+link.href="./"+item[0]+"/index.html";
+link.textContent=item[1];
+
+card.appendChild(link);
+box.appendChild(card);
+
+});
+</script>
+
+
+</body>
+</html>

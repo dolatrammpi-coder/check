@@ -119,10 +119,10 @@
   </a>
 
 
-  <a class="subject-card" href="docs/subject-wise-notes/economics/index.html">
-    <span class="subject-icon">💰</span>
-    <strong>अर्थव्यवस्था</strong>
-    <small>भारतीय अर्थव्यवस्था के महत्वपूर्ण concepts और facts</small>
+  <a class="subject-card" href="docs/subject-wise-notes/science/index.html">
+    <span class="subject-icon">🔬</span>
+    <strong>विज्ञान</strong>
+    <small>सामान्य विज्ञान के महत्वपूर्ण concepts</small>
     <b>पढ़ें →</b>
   </a>
 
@@ -220,7 +220,7 @@
   </div>
 
 
-  <a href="#quizzes">Quiz देखें →</a>
+  <a href="#">Quiz देखें →</a>
 </div>
 </div> </section> 
 <section class="learning-section" id="study-method">

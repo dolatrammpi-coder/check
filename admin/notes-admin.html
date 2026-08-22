@@ -1,0 +1,72 @@
+
+<!doctype html> <html lang="hi"> <head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width,initial-scale=1"> <title>Notes Admin V3 | Exam Darpan</title> </head> <body> <main> <h1>Notes Admin V3</h1> <p>Subject Wise Notes management</p> <section> <h2>Repository</h2>
+
+<label>Owner</label>
+<input id="owner" value="dolatrammpi-coder">
+
+<label>Repository</label>
+<input id="repo" value="Quiz">
+
+<label>Branch</label>
+<input id="branch" value="main">
+
+</section> <section> <h2>Structure</h2> <button id="fetchStructure" type="button"> Fetch Structure </button> <p id="fetchStatus">Structure not fetched</p>
+
+<label>Subject</label>
+<select id="subject">
+
+<option value="">Select Subject</option> </select>
+
+<label>Chapter</label>
+<select id="chapter">
+
+<option value="">Select Chapter</option> </select>
+
+<label>Topic</label>
+<select id="topic">
+
+<option value="">Select Topic</option> </select> </section> <section> <h2>Topic Content</h2>
+
+<label>Title</label>
+<input id="title">
+
+<label>Description</label>
+
+<textarea id="description" rows="4"></textarea>
+
+<label>Questions JSON</label>
+
+<textarea id="json" rows="18" placeholder='[{"question":"...","answer":"..."}]'></textarea> <button id="validate" type="button"> Validate </button> <p id="status">Waiting</p> </section> <section> <h2>Preview</h2> <div id="preview"></div> </section> <section> <h2>GitHub Authentication</h2>
+
+<label>GitHub Token</label>
+
+<input id="token" type="password" autocomplete="off" placeholder="GitHub token">
+<button id="saveGithub" type="button">Save to GitHub</button>
+<p id="saveStatus">Not saved</p>
+
+<script>
+const NOTES_ROOT="docs/subject-wise-notes/";
+let tree=[];
+const subjectSelect=document.getElementById("subject");
+const chapterSelect=document.getElementById("chapter");
+const topicSelect=document.getElementById("topic");
+const fetchStatus=document.getElementById("fetchStatus");
+function repoSettings(){const owner=document.getElementById("owner").value.trim();const repo=document.getElementById("repo").value.trim();const branch=document.getElementById("branch").value.trim();if(!owner||!repo||!branch)throw Error("Repository settings missing");return {owner,repo,branch};}
+async function fetchStructure(){const {owner,repo,branch}=repoSettings();const url="https"+":"+"//api."+"github."+"com/repos/"+owner+"/"+repo+"/git/trees/"+branch+"?recursive=1";const response=await fetch(url);if(!response.ok)throw Error("GitHub fetch failed: "+response.status);const data=await response.json();tree=data.tree||[];subjectSelect.innerHTML="<option value=\"\">Select Subject</option>";tree.filter(x=>x.type==="tree"&&x.path.startsWith(NOTES_ROOT)&&x.path.split("/").length===3).forEach(x=>{const o=document.createElement("option");o.value=x.path.slice(NOTES_ROOT.length,-1);o.textContent=o.value;subjectSelect.appendChild(o);});chapterSelect.innerHTML="<option value=\"\">Select Chapter</option>";topicSelect.innerHTML="<option value=\"\">Select Topic</option>";}
+document.getElementById("fetchStructure").onclick=async function(){fetchStatus.textContent="Fetching...";try{await fetchStructure();fetchStatus.textContent="✓ Structure fetched";}catch(e){fetchStatus.textContent="✗ "+e.message;}};
+function loadChapters(){const subject=subjectSelect.value;chapterSelect.innerHTML="<option value=\"\">Select Chapter</option>";topicSelect.innerHTML="<option value=\"\">Select Topic</option>";if(!subject)return;const prefix=NOTES_ROOT+subject+"/";tree.filter(x=>x.type==="tree"&&x.path.startsWith(prefix)&&x.path.split("/").length===4).forEach(x=>{const o=document.createElement("option");o.value=x.path.slice(prefix.length,-1);o.textContent=o.value;chapterSelect.appendChild(o);});}
+function loadTopics(){const subject=subjectSelect.value;const chapter=chapterSelect.value;topicSelect.innerHTML="<option value=\"\">Select Topic</option>";if(!subject||!chapter)return;const prefix=NOTES_ROOT+subject+"/"+chapter+"/";tree.filter(x=>x.type==="tree"&&x.path.startsWith(prefix)&&x.path.split("/").length===5).forEach(x=>{const o=document.createElement("option");o.value=x.path.slice(prefix.length,-1);o.textContent=o.value;topicSelect.appendChild(o);});}
+subjectSelect.addEventListener("change",loadChapters);chapterSelect.addEventListener("change",loadTopics);
+async function loadTopicData(){const subject=subjectSelect.value;const chapter=chapterSelect.value;const topic=topicSelect.value;if(!subject||!chapter||!topic)return;const {owner,repo,branch}=repoSettings();const path=NOTES_ROOT+subject+"/"+chapter+"/"+topic+"/index.html";const url="https"+":"+"//api."+"github."+"com/repos/"+owner+"/"+repo+"/contents/"+path+"?ref="+encodeURIComponent(branch);const response=await fetch(url);if(!response.ok)throw Error("Topic fetch failed: "+response.status);const data=await response.json();if(!data.content)throw Error("Topic content missing");const html=atob(data.content.replace(/\\n/g,""));currentFile={path:path,sha:data.sha,html:html};const doc=new DOMParser().parseFromString(html,"text/html");document.getElementById("title").value=doc.querySelector("h1")?.textContent.trim()||doc.title||"";document.getElementById("description").value=doc.querySelector(".description")?.textContent.trim()||"";const rows=[...doc.querySelectorAll(".notes-table tbody tr")];const questions=rows.map(r=>{const cells=r.querySelectorAll("td");return {question:cells[0]?.textContent.trim()||"",answer:cells[1]?.textContent.trim()||""};});document.getElementById("json").value=JSON.stringify(questions,null,2);status.textContent="✓ Topic loaded";renderPreview();}
+topicSelect.addEventListener("change",function(){loadTopicData().catch(e=>{status.textContent="✗ "+e.message;});});
+function renderPreview(){const box=document.getElementById("preview");const title=document.getElementById("title").value.trim();const description=document.getElementById("description").value.trim();let questions;try{questions=JSON.parse(document.getElementById("json").value||"[]");if(!Array.isArray(questions))throw Error("Questions must be an array");}catch(e){box.innerHTML="<p>Invalid JSON: "+e.message+"</p>";return;}let html="<h2>"+(title||"Untitled")+"</h2>";if(description)html+="<p>"+description+"</p>";html+="<table border=1><thead><tr><th>प्रश्न</th><th>उत्तर</th></tr></thead><tbody>";questions.forEach(function(q){html+="<tr><td>"+(q.question||"")+"</td><td>"+(q.answer||"")+"</td></tr>";});html+="</tbody></table>";box.innerHTML=html;}
+document.getElementById("validate").onclick=function(){try{const title=document.getElementById("title").value.trim();const description=document.getElementById("description").value.trim();const questions=JSON.parse(document.getElementById("json").value||"[]");if(!title)throw Error("Title required");if(!description)throw Error("Description required");if(!Array.isArray(questions))throw Error("Questions must be an array");questions.forEach(function(q,i){if(!q.question||!q.answer)throw Error("Question "+(i+1)+" must have question and answer");});status.textContent="✓ Validation OK — "+questions.length+" questions";renderPreview();}catch(e){status.textContent="✗ "+e.message;}};
+document.getElementById("json").addEventListener("input",renderPreview);document.getElementById("title").addEventListener("input",renderPreview);document.getElementById("description").addEventListener("input",renderPreview);
+function buildUpdatedHtml(){if(!currentFile||!currentFile.html)throw Error("Load a topic first");const doc=new DOMParser().parseFromString(currentFile.html,"text/html");const title=document.getElementById("title").value.trim();const description=document.getElementById("description").value.trim();let questions;try{questions=JSON.parse(document.getElementById("json").value||"[]");}catch(e){throw Error("Invalid JSON: "+e.message);}if(!title)throw Error("Title required");if(!description)throw Error("Description required");if(!Array.isArray(questions))throw Error("Questions must be an array");let h1=doc.querySelector("h1");if(!h1){h1=doc.createElement("h1");doc.querySelector("main")?.prepend(h1);}h1.textContent=title;let desc=doc.querySelector(".description");if(!desc){desc=doc.createElement("p");desc.className="description";h1.insertAdjacentElement("afterend",desc);}desc.textContent=description;let wrap=doc.querySelector(".notes-table-wrap");if(!wrap){wrap=doc.createElement("div");wrap.className="notes-table-wrap";doc.querySelector("main")?.appendChild(wrap);}let table=wrap.querySelector("table.notes-table");if(!table){table=doc.createElement("table");table.className="notes-table";wrap.appendChild(table);}table.innerHTML="<thead><tr><th>प्रश्न</th><th>उत्तर</th></tr></thead><tbody></tbody>";const tbody=table.querySelector("tbody");questions.forEach(function(q){const tr=doc.createElement("tr");const qd=doc.createElement("td");const ad=doc.createElement("td");qd.textContent=q.question;ad.textContent=q.answer;tr.appendChild(qd);tr.appendChild(ad);tbody.appendChild(tr);});const t=doc.querySelector("title");if(t)t.textContent=title+" — One Liner Notes | Exam Darpan";return "<!doctype html>"+doc.documentElement.outerHTML;}
+function encodeBase64Utf8(text){const bytes=new TextEncoder().encode(text);let binary="";for(let i=0;i<bytes.length;i+=0x8000){binary+=String.fromCharCode(...bytes.slice(i,i+0x8000));}return btoa(binary);}
+async function saveToGithub(){const token=document.getElementById("token").value.trim();if(!token)throw Error("GitHub Token required");if(!currentFile)throw Error("Load a topic first");const {owner,repo,branch}=repoSettings();const html=buildUpdatedHtml();const content=encodeBase64Utf8(html);const url="https"+":"+"//api."+"github."+"com/repos/"+owner+"/"+repo+"/contents/"+currentFile.path;const response=await fetch(url,{method:"PUT",headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json","Content-Type":"application/json"},body:JSON.stringify({message:"Update notes: "+document.getElementById("title").value.trim(),content:content,sha:currentFile.sha,branch:branch})});if(!response.ok){const text=await response.text();throw Error("GitHub save failed: "+response.status+" "+text.slice(0,500));}const result=await response.json();if(result.content&&result.content.sha)currentFile.sha=result.content.sha;currentFile.html=html;return result;}
+document.getElementById("saveGithub").onclick=async function(){saveStatus.textContent="Saving to GitHub...";try{const result=await saveToGithub();const sha=result.commit&&result.commit.sha?result.commit.sha.slice(0,7):"success";saveStatus.textContent="✓ Saved to GitHub — "+sha;}catch(e){saveStatus.textContent="✗ "+e.message;}};
+</script>
+
+</body>
+</html>
