@@ -3,33 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Economics Notes | Exam Darpan</title>
-<meta name="description" content="अर्थशास्त्र से संबंधित महत्वपूर्ण अध्ययन नोट्स।">
-<link rel="stylesheet" href="../assets/notes.css">
+<meta name="description" content="Economics | Exam Darpan के महत्वपूर्ण अध्यायों और Topic-wise One Liner Revision Notes को एक ही जगह से पढ़ें और त्वरित अभ्यास करें।">
+<meta name="robots" content="index, follow">
+<title>Economics | Exam Darpan Notes — Subject Wise Notes | Exam Darpan</title>
+<link rel="stylesheet" href="../assets/notes.css?v=3">
 </head>
 <body>
 <header class="site-header">
-<h1>Economics Notes</h1>
-<p>Economics • Indian Economy • Banking • Exam Oriented Notes</p>
+<div class="container header-inner">
+<a class="brand" href="../../../index.html"><span class="brand-mark">📚</span><span>Exam Darpan</span></a>
+<nav class="top-nav">
+<a href="../../../index.html">Home</a>
+<a href="../index.html" class="active-nav">Notes</a>
+<a href="../../../test-series/index.html">Test Series</a>
+</nav>
+</div>
 </header>
 <main class="container">
 <nav class="breadcrumb">
 <a href="../../../index.html">Home</a>
 <span>›</span>
-<a href="../index.html">Notes</a>
+<a href="../index.html">Subject Wise Notes</a>
 <span>›</span>
-<span>Economics</span>
+<span>Economics | Exam Darpan</span>
 </nav>
-<section>
-<h2>Economics Notes</h2>
-<p>अर्थशास्त्र से संबंधित महत्वपूर्ण अध्ययन नोट्स।</p>
-<div id="notes-content">
-<p>इस विषय के नोट्स यहाँ उपलब्ध होंगे।</p>
+<section class="hero">
+<div class="kicker">💹 Subject Wise Notes</div>
+<h1>Economics | Exam Darpan Notes</h1>
+<p>Economics | Exam Darpan के महत्वपूर्ण अध्यायों और Topic-wise One Liner Revision Notes को एक ही जगह से पढ़ें और त्वरित अभ्यास करें।</p>
+<div class="meta"><span>🧠 Reading + Practice</span></div>
+</section>
+<div class="ad-slot">Advertisement</div>
+<div class="notes-tools">
+<div class="search-wrap">🔎
+<input id="topicSearch" type="search" placeholder="Topic खोजें..." aria-label="Topic खोजें">
 </div>
+<button class="clear-search" id="clearSearch">Clear</button>
+</div>
+<h2 class="section-title">Economics | Exam Darpan के अध्याय</h2>
+<section class="chapter-card">
+<div class="chapter-head">
+<div>
+<div class="chapter-title">💹 Economics | Exam Darpan Topics</div>
+<div class="chapter-desc">Economics | Exam Darpan के प्रमुख परीक्षा उपयोगी विषय</div>
+</div>
+<span class="chapter-count">0 Topics</span>
+</div>
+<div class="topic-list"><div class="topic"><span class="topic-left"><span class="topic-num">--</span><span class="topic-name">Topics जल्द उपलब्ध होंगे</span></span></div></div>
+</section>
+<div class="ad-slot">Advertisement</div>
+<section class="info">
+<h2>Economics | Exam Darpan Notes कैसे उपयोग करें?</h2>
+<p>किसी topic को चुनकर उसके परीक्षा उपयोगी Notes पढ़ें और revision करें।</p>
 </section>
 </main>
 <footer class="site-footer">
-<p><a href="../../../index.html">Home</a></p>
+<div class="container footer-inner">
+<div class="footer-brand">Exam Darpan</div>
+<p class="footer-about">प्रतियोगी परीक्षाओं की तैयारी के लिए विषयवार नोट्स, One Liner Revision और Practice सामग्री।</p>
+<nav class="footer-links">
+<a href="../../../index.html">Home</a>
+<a href="../index.html">Subject Wise Notes</a>
+<a href="../../../test-series/index.html">Test Series</a>
+<a href="../../../about/index.html">About</a>
+<a href="../../../privacy-policy/index.html">Privacy Policy</a>
+<a href="../../../disclaimer/index.html">Disclaimer</a>
+<a href="../../../contact/index.html">Contact</a>
+<a href="../../../terms-and-conditions/index.html">Terms &amp; Conditions</a>
+</nav>
+<p class="footer-copy">© 2026 Exam Darpan. All rights reserved.</p>
+</div>
 </footer>
+<script>
+const i=document.getElementById("topicSearch");
+const c=document.getElementById("clearSearch");
+const t=[...document.querySelectorAll(".topic")];
+function f(){
+let q=i.value.trim().toLowerCase();
+t.forEach(x=>{
+let ok=!q||x.textContent.toLowerCase().includes(q);
+x.style.display=ok?"flex":"none";
+});
+}
+i.oninput=f;
+c.onclick=()=>{
+i.value="";
+f();
+i.focus();
+};
+</script>
 </body>
 </html>
