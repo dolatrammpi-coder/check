@@ -52,7 +52,7 @@
       "old_price_c": 1799,
       "discount_c": "28% OFF",
       "tag_c": "Best Seller",
-      "image_c": "/assets/product-candle-holders.jpg",
+      "image_c": "assets/product-candle-holders.jpg",
       "description_c": "Warm brass finish",
       "active_c": true
     },
@@ -65,7 +65,7 @@
       "old_price_c": 3499,
       "discount_c": "29% OFF",
       "tag_c": "New",
-      "image_c": "/cookware.jpg",
+      "image_c": "cookware.jpg",
       "description_c": "Everyday cooking, elevated",
       "active_c": true
     },
@@ -78,7 +78,7 @@
       "old_price_c": 1299,
       "discount_c": "31% OFF",
       "tag_c": "",
-      "image_c": "/assets/product-masala-storage.jpg",
+      "image_c": "assets/product-masala-storage.jpg",
       "description_c": "Neat, fresh, organized",
       "active_c": true
     },
@@ -91,7 +91,7 @@
       "old_price_c": 2499,
       "discount_c": "28% OFF",
       "tag_c": "",
-      "image_c": "/assets/product-ceramic-dinner-set.jpg",
+      "image_c": "assets/product-ceramic-dinner-set.jpg",
       "description_c": "A table worth gathering around",
       "active_c": true
     },
@@ -104,7 +104,7 @@
       "old_price_c": 999,
       "discount_c": "30% OFF",
       "tag_c": "",
-      "image_c": "/assets/product-kitchen-utensils.jpg",
+      "image_c": "assets/product-kitchen-utensils.jpg",
       "description_c": "Practical with a polished look",
       "active_c": true
     }
