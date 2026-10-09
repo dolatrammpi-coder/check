@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "_table": "store_categories_c",
+    "Name": {
+      "type": "Text",
+      "label": "Category name"
+    },
+    "slug_c": {
+      "type": "Text",
+      "label": "Category slug"
+    },
+    "subtitle_c": {
+      "type": "Text",
+      "label": "Short description"
+    },
+    "image_c": {
+      "type": "Text",
+      "label": "Category image URL"
+    },
+    "sort_order_c": {
+      "type": "Number",
+      "label": "Sort order"
+    }
+  },
+  "records": [
+    {
+      "Id": "cat-home-decor",
+      "Name": "Home Decor",
+      "slug_c": "decor",
+      "subtitle_c": "Finishing touches",
+      "image_c": "/assets/cat-home-decor.jpg",
+      "sort_order_c": 1
+    },
+    {
+      "Id": "cat-cookware",
+      "Name": "Kitchen Cookware",
+      "slug_c": "cookware",
+      "subtitle_c": "Made for everyday",
+      "image_c": "/assets/cat-cookware.jpg",
+      "sort_order_c": 2
+    },
+    {
+      "Id": "cat-storage",
+      "Name": "Storage & Organizers",
+      "slug_c": "storage",
+      "subtitle_c": "A place for everything",
+      "image_c": "/assets/cat-storage.jpg",
+      "sort_order_c": 3
+    },
+    {
+      "Id": "cat-dinnerware",
+      "Name": "Dinnerware & Serveware",
+      "slug_c": "dinnerware",
+      "subtitle_c": "Gather beautifully",
+      "image_c": "/assets/cat-dinnerware.jpg",
+      "sort_order_c": 4
+    },
+    {
+      "Id": "cat-kitchen-tools",
+      "Name": "Kitchen Tools",
+      "slug_c": "tools",
+      "subtitle_c": "Little helpers",
+      "image_c": "/assets/cat-kitchen-tools.jpg",
+      "sort_order_c": 5
+    },
+    {
+      "Id": "cat-essentials",
+      "Name": "Home Essentials",
+      "slug_c": "essentials",
+      "subtitle_c": "Everyday comfort",
+      "image_c": "/assets/cat-essentials.jpg",
+      "sort_order_c": 6
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+@font-face{font-family:'DM Sans';src:url('/assets/fonts/local-font-1.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('/assets/fonts/local-font-2.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('/assets/fonts/local-font-3.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('/assets/fonts/local-font-4.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Playfair Display';src:url('/assets/fonts/local-font-5.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Playfair Display';src:url('/assets/fonts/local-font-6.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Playfair Display';src:url('/assets/fonts/local-font-7.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+
+:root {
+  --background: oklch(0.985 0.012 82);
+  --foreground: oklch(0.19 0.025 55);
+  --card: oklch(0.998 0.008 82);
+  --card-foreground: oklch(0.19 0.025 55);
+  --popover: oklch(0.998 0.008 82);
+  --popover-foreground: oklch(0.19 0.025 55);
+  --primary: oklch(0.43 0.09 72);
+  --primary-foreground: oklch(0.99 0.01 82);
+  --secondary: oklch(0.94 0.022 79);
+  --secondary-foreground: oklch(0.25 0.03 55);
+  --muted: oklch(0.95 0.018 80);
+  --muted-foreground: oklch(0.48 0.025 58);
+  --accent: oklch(0.965 0.014 82);
+  --accent-foreground: oklch(0.19 0.025 55);
+  --destructive: oklch(0.56 0.19 27);
+  --destructive-foreground: oklch(0.99 0.01 82);
+  --border: oklch(0.88 0.025 76);
+  --input: oklch(0.88 0.025 76);
+  --ring: oklch(0.56 0.08 72);
+  --highlight: oklch(0.68 0.13 77);
+  --highlight-foreground: oklch(0.19 0.025 55);
+  --success: oklch(0.58 0.13 151);
+  --success-foreground: oklch(0.99 0.01 82);
+  --success-muted: oklch(0.94 0.045 151);
+  --success-border: oklch(0.82 0.07 151);
+  --warning: oklch(0.74 0.14 80);
+  --warning-foreground: oklch(0.2 0.03 55);
+  --warning-muted: oklch(0.95 0.05 80);
+  --warning-border: oklch(0.84 0.09 80);
+  --priority-high: oklch(0.58 0.18 28);
+  --priority-medium: oklch(0.72 0.14 78);
+  --priority-low: oklch(0.62 0.13 151);
+  --info: oklch(0.62 0.12 235);
+  --info-foreground: oklch(0.99 0.01 82);
+  --chart-1: oklch(0.51 0.10 72);
+  --chart-2: oklch(0.61 0.11 150);
+  --chart-3: oklch(0.62 0.12 235);
+  --chart-4: oklch(0.70 0.12 38);
+  --chart-5: oklch(0.60 0.10 315);
+  --sidebar: oklch(0.19 0.025 55);
+  --sidebar-foreground: oklch(0.96 0.015 82);
+  --sidebar-primary: oklch(0.74 0.09 76);
+  --sidebar-primary-foreground: oklch(0.18 0.025 55);
+  --sidebar-accent: oklch(0.28 0.025 55);
+  --sidebar-accent-foreground: oklch(0.96 0.015 82);
+  --sidebar-border: oklch(0.33 0.025 55);
+  --sidebar-ring: oklch(0.68 0.08 76);
+  --shadow-xs: 0 1px 2px oklch(0.05 0.01 55 / 0.12);
+  --shadow-sm: 0 3px 9px oklch(0.05 0.01 55 / 0.18);
+  --shadow-md: 0 8px 22px oklch(0.05 0.01 55 / 0.24);
+  --shadow-lg: 0 18px 42px oklch(0.05 0.01 55 / 0.30);
+  --spacing-sidebar: 1rem;
+  --spacing-header: 1rem;
+  --radius: 0.375rem;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --shadow-xs: 0 1px 2px oklch(0.20 0.02 55 / 0.04);
+  --shadow-sm: 0 3px 9px oklch(0.20 0.02 55 / 0.06);
+  --shadow-md: 0 8px 22px oklch(0.20 0.02 55 / 0.08);
+  --shadow-lg: 0 18px 42px oklch(0.20 0.02 55 / 0.12);
+  --shadow-soft: 0 10px 30px oklch(0.20 0.02 55 / 0.07);
+  --spacing-sidebar: 1rem;
+  --spacing-header: 1rem;
+}
+
+.dark {
+  --background: oklch(0.17 0.02 55);
+  --foreground: oklch(0.95 0.015 82);
+  --card: oklch(0.22 0.022 55);
+  --card-foreground: oklch(0.95 0.015 82);
+  --popover: oklch(0.24 0.022 55);
+  --popover-foreground: oklch(0.95 0.015 82);
+  --primary: oklch(0.72 0.09 76);
+  --primary-foreground: oklch(0.17 0.02 55);
+  --secondary: oklch(0.27 0.02 55);
+  --secondary-foreground: oklch(0.95 0.015 82);
+  --muted: oklch(0.25 0.02 55);
+  --muted-foreground: oklch(0.72 0.02 75);
+  --accent: oklch(0.23 0.02 55);
+  --accent-foreground: oklch(0.95 0.015 82);
+  --destructive: oklch(0.62 0.17 27);
+  --destructive-foreground: oklch(0.98 0.01 82);
+  --border: oklch(0.34 0.02 55);
+  --input: oklch(0.34 0.02 55);
+  --ring: oklch(0.72 0.08 76);
+  --highlight: oklch(0.76 0.12 77);
+  --highlight-foreground: oklch(0.17 0.02 55);
+  --success: oklch(0.68 0.13 151);
+  --success-foreground: oklch(0.17 0.02 55);
+  --success-muted: oklch(0.28 0.045 151);
+  --success-border: oklch(0.41 0.07 151);
+  --warning: oklch(0.78 0.13 80);
+  --warning-foreground: oklch(0.17 0.02 55);
+  --warning-muted: oklch(0.30 0.05 80);
+  --warning-border: oklch(0.44 0.09 80);
+  --priority-high: oklch(0.68 0.16 28);
+  --priority-medium: oklch(0.78 0.13 80);
+  --priority-low: oklch(0.68 0.13 151);
+  --info: oklch(0.70 0.12 235);
+  --info-foreground: oklch(0.17 0.02 55);
+  --chart-1: oklch(0.72 0.09 76);
+  --chart-2: oklch(0.68 0.13 151);
+  --chart-3: oklch(0.70 0.12 235);
+  --chart-4: oklch(0.75 0.12 38);
+  --chart-5: oklch(0.69 0.10 315);
+  --sidebar: oklch(0.13 0.02 55);
+  --sidebar-foreground: oklch(0.95 0.015 82);
+  --sidebar-primary: oklch(0.76 0.09 76);
+  --sidebar-primary-foreground: oklch(0.17 0.02 55);
+  --sidebar-accent: oklch(0.22 0.02 55);
+  --sidebar-accent-foreground: oklch(0.95 0.015 82);
+  --sidebar-border: oklch(0.30 0.02 55);
+  --sidebar-ring: oklch(0.72 0.08 76);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--highlight);
+  color: var(--highlight-foreground);
+}

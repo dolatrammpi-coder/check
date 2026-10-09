@@ -1,0 +1,112 @@
+{
+  "_meta": {
+    "_table": "store_products_c",
+    "Name": {
+      "type": "Text",
+      "label": "Product name"
+    },
+    "slug_c": {
+      "type": "Text",
+      "label": "Product slug"
+    },
+    "category_c": {
+      "type": "Text",
+      "label": "Category slug"
+    },
+    "price_c": {
+      "type": "Number",
+      "label": "Sale price (INR)"
+    },
+    "old_price_c": {
+      "type": "Number",
+      "label": "Original price (INR)"
+    },
+    "discount_c": {
+      "type": "Text",
+      "label": "Discount label"
+    },
+    "tag_c": {
+      "type": "Text",
+      "label": "Product tag"
+    },
+    "image_c": {
+      "type": "Text",
+      "label": "Product image URL"
+    },
+    "description_c": {
+      "type": "Text",
+      "label": "Short description"
+    },
+    "active_c": {
+      "type": "Boolean",
+      "label": "Active product"
+    }
+  },
+  "records": [
+    {
+      "Id": "product-candle-holders",
+      "Name": "Elegant Candle Holder Set",
+      "slug_c": "candle-holders",
+      "category_c": "decor",
+      "price_c": 1299,
+      "old_price_c": 1799,
+      "discount_c": "28% OFF",
+      "tag_c": "Best Seller",
+      "image_c": "/assets/product-candle-holders.jpg",
+      "description_c": "Warm brass finish",
+      "active_c": true
+    },
+    {
+      "Id": "product-cookware-set",
+      "Name": "Non-Stick Cookware Set",
+      "slug_c": "cookware-set",
+      "category_c": "cookware",
+      "price_c": 2499,
+      "old_price_c": 3499,
+      "discount_c": "29% OFF",
+      "tag_c": "New",
+      "image_c": "/cookware.jpg",
+      "description_c": "Everyday cooking, elevated",
+      "active_c": true
+    },
+    {
+      "Id": "product-masala-storage",
+      "Name": "Masala Storage Set",
+      "slug_c": "masala-storage",
+      "category_c": "storage",
+      "price_c": 899,
+      "old_price_c": 1299,
+      "discount_c": "31% OFF",
+      "tag_c": "",
+      "image_c": "/assets/product-masala-storage.jpg",
+      "description_c": "Neat, fresh, organized",
+      "active_c": true
+    },
+    {
+      "Id": "product-ceramic-dinner-set",
+      "Name": "Ceramic Dinner Set",
+      "slug_c": "ceramic-dinner-set",
+      "category_c": "dinnerware",
+      "price_c": 1799,
+      "old_price_c": 2499,
+      "discount_c": "28% OFF",
+      "tag_c": "",
+      "image_c": "/assets/product-ceramic-dinner-set.jpg",
+      "description_c": "A table worth gathering around",
+      "active_c": true
+    },
+    {
+      "Id": "product-kitchen-utensils",
+      "Name": "Kitchen Utensil Set",
+      "slug_c": "kitchen-utensils",
+      "category_c": "tools",
+      "price_c": 699,
+      "old_price_c": 999,
+      "discount_c": "30% OFF",
+      "tag_c": "",
+      "image_c": "/assets/product-kitchen-utensils.jpg",
+      "description_c": "Practical with a polished look",
+      "active_c": true
+    }
+  ]
+}
