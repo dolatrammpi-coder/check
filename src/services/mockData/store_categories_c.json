@@ -28,7 +28,7 @@
       "Name": "Home Decor",
       "slug_c": "decor",
       "subtitle_c": "Finishing touches",
-      "image_c": "assets/cat-home-decor.jpg",
+      "image_c": "/check/assets/cat-home-decor.jpg",
       "sort_order_c": 1
     },
     {
@@ -36,7 +36,7 @@
       "Name": "Kitchen Cookware",
       "slug_c": "cookware",
       "subtitle_c": "Made for everyday",
-      "image_c": "assets/cat-cookware.jpg",
+      "image_c": "/check/assets/cat-cookware.jpg",
       "sort_order_c": 2
     },
     {
@@ -44,7 +44,7 @@
       "Name": "Storage & Organizers",
       "slug_c": "storage",
       "subtitle_c": "A place for everything",
-      "image_c": "assets/cat-storage.jpg",
+      "image_c": "/check/assets/cat-storage.jpg",
       "sort_order_c": 3
     },
     {
@@ -52,7 +52,7 @@
       "Name": "Dinnerware & Serveware",
       "slug_c": "dinnerware",
       "subtitle_c": "Gather beautifully",
-      "image_c": "assets/cat-dinnerware.jpg",
+      "image_c": "/check/assets/cat-dinnerware.jpg",
       "sort_order_c": 4
     },
     {
@@ -60,7 +60,7 @@
       "Name": "Kitchen Tools",
       "slug_c": "tools",
       "subtitle_c": "Little helpers",
-      "image_c": "assets/cat-kitchen-tools.jpg",
+      "image_c": "/check/assets/cat-kitchen-tools.jpg",
       "sort_order_c": 5
     },
     {
@@ -68,7 +68,7 @@
       "Name": "Home Essentials",
       "slug_c": "essentials",
       "subtitle_c": "Everyday comfort",
-      "image_c": "assets/cat-essentials.jpg",
+      "image_c": "/check/assets/cat-essentials.jpg",
       "sort_order_c": 6
     }
   ]

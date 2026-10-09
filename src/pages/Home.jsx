@@ -209,7 +209,7 @@ export default function Home() {
       <main>
         {announcement && <div className="live-announcement" role="status">{announcement}<button onClick={() => setAnnouncement('')} aria-label="Dismiss notification"><Icon name="X" size={15} /></button></div>}
         <section className="hero" id="home">
-          <img className="hero-image" src="assets/hero.jpg" alt="Warm, thoughtfully styled living room with soft neutral furnishings" />
+          <img className="hero-image" src="/check/assets/hero.jpg" alt="Warm, thoughtfully styled living room with soft neutral furnishings" />
           <div className="hero-overlay" />
           <div className="hero-copy">
             <p className="hero-eyebrow"><span /> Stylish Homes <i>•</i> Happy Lives</p>
@@ -257,7 +257,7 @@ export default function Home() {
           <div className="all-products-wrap"><button className="outline-button" onClick={() => { setActiveCategory('all'); setSearchText(''); }}>Explore all products <Icon name="ArrowRight" size={17} /></button></div>
         </section>
         <section className="about-section" id="about">
-          <div className="about-image"><img src="assets/about.jpg" alt="A peaceful dining setting with natural textures and warm home accents" loading="lazy" /><div className="image-caption"><span>THE ART OF LIVING WELL</span><strong>Little details.<br />A lovely difference.</strong></div></div>
+          <div className="about-image"><img src="/check/assets/about.jpg" alt="A peaceful dining setting with natural textures and warm home accents" loading="lazy" /><div className="image-caption"><span>THE ART OF LIVING WELL</span><strong>Little details.<br />A lovely difference.</strong></div></div>
           <div className="about-copy">
             <p className="section-eyebrow">About Zikson Prime Enterprise</p>
             <h2>More Than Just Products.<br /><em>It’s a Lifestyle.</em></h2>
@@ -274,12 +274,12 @@ export default function Home() {
         </section>
         <section className="editorial-banners" id="decor">
           <a className="editorial-banner decor-banner" href="#products" onClick={() => setActiveCategory('decor')}>
-            <img src="assets/banner-decor.jpg" alt="" loading="lazy" />
+            <img src="/check/assets/banner-decor.jpg" alt="" loading="lazy" />
             <span className="banner-shade" />
             <span className="banner-copy"><strong>Home Décor</strong><small>Add Beauty to Every Corner</small><span className="banner-button">Discover Decor <Icon name="ArrowRight" size={16} /></span></span>
           </a>
           <a className="editorial-banner kitchen-banner" href="#products" onClick={() => setActiveCategory('cookware')}>
-            <img src="assets/banner-kitchen.jpg" alt="" loading="lazy" />
+            <img src="/check/assets/banner-kitchen.jpg" alt="" loading="lazy" />
             <span className="banner-shade" />
             <span className="banner-copy"><strong>Home & Kitchen</strong><small>Make Cooking a Joy</small><span className="banner-button">Shop Kitchen <Icon name="ArrowRight" size={16} /></span></span>
           </a>
